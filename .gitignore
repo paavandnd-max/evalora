@@ -14,3 +14,7 @@ server_*.py
 server.py.bak
 .freebuff/
 .opencode/
+*.sqlite3*
+data/*.sqlite3*
+stitch_import_20261023/
+reference_ui/

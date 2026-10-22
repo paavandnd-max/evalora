@@ -843,21 +843,7 @@ def reset_demo_admin_password():
     print(f"New temporary password: {password}")
     print("This changed only .evalora_test.sqlite3; Supabase credentials were not touched.")
 
-SEED = {
-    "problems": [{
-        "id": "waste-less", "title": "Waste less, live better",
-        "description": "Build a solution that helps communities reduce everyday waste through smarter habits and local action.",
-        "created_at": "2026-10-15T08:00:00+00:00",
-        "rubric": [{"name": "Problem alignment", "points": 30}, {"name": "Core functionality", "points": 30}, {"name": "Code integrity", "points": 25}, {"name": "Documentation", "points": 15}],
-    }],
-    "submissions": [
-        {"id":"s1","team":"GreenLoop","problem_id":"waste-less","problem":"Waste less, live better","members":4,"submitted_at":"12:42 PM","status":"Ready for review","score":92,"checks_passed":12,"checks_total":12,"files":[]},
-        {"id":"s2","team":"ByteBuddies","problem_id":"waste-less","problem":"Access for everyone","members":3,"submitted_at":"12:18 PM","status":"In review","score":86,"checks_passed":10,"checks_total":12,"files":[]},
-        {"id":"s3","team":"The Good Bugs","problem_id":"waste-less","problem":"Food rescue network","members":4,"submitted_at":"11:56 AM","status":"Flagged","score":64,"checks_passed":8,"checks_total":12,"files":[]},
-        {"id":"s4","team":"CloudNine","problem_id":"waste-less","problem":"Access for everyone","members":3,"submitted_at":"11:31 AM","status":"Ready for review","score":89,"checks_passed":12,"checks_total":12,"files":[]},
-        {"id":"s5","team":"Urban Roots","problem_id":"waste-less","problem":"Waste less, live better","members":5,"submitted_at":"10:58 AM","status":"In review","score":81,"checks_passed":11,"checks_total":12,"files":[]},
-    ],
-}
+SEED = {"problems": [], "submissions": []}
 
 
 def load_data():
@@ -2361,16 +2347,23 @@ class Handler(BaseHTTPRequestHandler):
         super().setup()
         self.connection.settimeout(REQUEST_READ_TIMEOUT_SECONDS)
 
+    def handle_one_request(self):
+        try:
+            super().handle_one_request()
+        except (socket.timeout, TimeoutError):
+            self.close_connection = True
+
     def end_headers(self):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("X-Frame-Options", "DENY")
         self.send_header("Referrer-Policy", "same-origin")
         self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
-        self.send_header("Content-Security-Policy", "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'")
+        self.send_header("Content-Security-Policy", "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'")
         super().end_headers()
 
     def log_message(self, fmt, *args):
         print("[%s] %s" % (self.log_date_time_string(), fmt % args))
+
 
     def send_json(self, payload, status=200, headers=None):
         body = json.dumps(payload).encode("utf-8")
@@ -2622,7 +2615,7 @@ class Handler(BaseHTTPRequestHandler):
                 return
             self.send_html_file("login.html")
             return
-        if path in {"/dashboard", "/dashboard/", "/index.html"}:
+        if path in {"/dashboard", "/dashboard/", "/index.html", "/teams", "/submissions", "/scores", "/catalogue", "/evaluations", "/reports", "/settings", "/problem-statements", "/judges", "/challenges", "/workspace", "/leaderboard", "/suite", "/console", "/evaluation-console"}:
             user = self.current_user()
             if not user or user.get("role") not in {"admin", "judge", "mentor"}:
                 self.redirect("/login")
@@ -2728,6 +2721,148 @@ class Handler(BaseHTTPRequestHandler):
                                 "teams": [], "judges": [], "reviews": [], "security_checks": [],
                                 "user": safe_user(user)})
             return
+        if path == "/api/challenges":
+            user = self.require_roles("admin", "judge", "mentor", "team")
+            if not user:
+                return
+            if DEMO_MODE:
+                with demo_db_connection() as connection:
+                    connection.row_factory = sqlite3.Row
+                    rows = connection.execute("""
+                        SELECT p.id, p.title, p.description, p.due_at, p.rubric_json, p.test_cases_json,
+                               e.id AS event_id, e.name AS event_name, e.status AS event_status,
+                               e.active_config_version
+                        FROM problems p
+                        LEFT JOIN events e ON e.problem_id = p.id
+                        ORDER BY p.id
+                    """).fetchall()
+                    challenges = []
+                    for r in rows:
+                        item = dict(r)
+                        try:
+                            test_cases = json.loads(item.pop("test_cases_json") or "[]")
+                        except Exception:
+                            test_cases = []
+                        try:
+                            rubric = json.loads(item.pop("rubric_json") or "[]")
+                        except Exception:
+                            rubric = []
+                        item["test_count"] = len(test_cases)
+                        item["test_cases"] = test_cases
+                        item["rubric"] = rubric
+                        challenges.append(item)
+                self.send_json({"challenges": challenges})
+                return
+            else:
+                data = load_data()
+                self.send_json({"challenges": data.get("problems", [])})
+                return
+        if path == "/api/leaderboard":
+            user = self.require_roles("admin", "judge", "mentor", "team")
+            if not user:
+                return
+            event_id = parse_qs(urlparse(self.path).query).get("event_id", [None])[0]
+            if DEMO_MODE:
+                with demo_db_connection() as connection:
+                    connection.row_factory = sqlite3.Row
+                    query = """
+                        SELECT s.id, s.event_id, s.team_id, COALESCE(et.team_name, t.name) AS team,
+                               s.score, s.checks_passed, s.checks_total, s.status, s.evaluation_status,
+                               s.submitted_at, e.name AS event_name
+                        FROM submissions s
+                        JOIN teams t ON t.id = s.team_id
+                        LEFT JOIN events e ON e.id = s.event_id
+                        LEFT JOIN event_teams et ON et.id = s.event_team_id
+                    """
+                    params = []
+                    if event_id and event_id != "all":
+                        query += " WHERE s.event_id = ?"
+                        params.append(event_id)
+                    query += " ORDER BY s.score DESC, s.checks_passed DESC, s.submitted_at ASC"
+                    rows = [dict(r) for r in connection.execute(query, tuple(params)).fetchall()]
+                    seen_teams = {}
+                    for row in rows:
+                        t = row["team"]
+                        if t not in seen_teams or row["score"] > seen_teams[t]["score"]:
+                            seen_teams[t] = row
+                    leaderboard = list(seen_teams.values())
+                    leaderboard.sort(key=lambda x: (-x["score"], -x["checks_passed"], x["submitted_at"]))
+                    for idx, item in enumerate(leaderboard, start=1):
+                        item["rank"] = idx
+                self.send_json({
+                    "leaderboard": leaderboard,
+                    "metrics": {
+                        "total_teams": len(leaderboard),
+                        "total_submissions": len(rows),
+                        "average_score": round(sum(r["score"] for r in leaderboard) / len(leaderboard)) if leaderboard else 0,
+                        "highest_score": max((r["score"] for r in leaderboard), default=0)
+                    }
+                })
+                return
+            else:
+                data = load_data()
+                subs = data.get("submissions", [])
+                leaderboard = sorted(subs, key=lambda x: -x.get("score", 0))
+                for idx, item in enumerate(leaderboard, start=1):
+                    item["rank"] = idx
+                self.send_json({"leaderboard": leaderboard, "metrics": {"total_teams": len(leaderboard), "total_submissions": len(subs)}})
+                return
+        if path == "/api/evaluations":
+            user = self.require_roles("admin", "judge", "mentor")
+            if not user:
+                return
+            submission_id = parse_qs(urlparse(self.path).query).get("submission_id", [None])[0]
+            if DEMO_MODE:
+                with demo_db_connection() as connection:
+                    connection.row_factory = sqlite3.Row
+                    query = """
+                        SELECT se.id, se.submission_id, se.event_id, se.config_version,
+                               se.evaluation_status, se.created_at,
+                               s.score, s.checks_passed, s.checks_total, s.repository_url,
+                               COALESCE(et.team_name, t.name) AS team, p.title AS problem, e.name AS event_name
+                        FROM submission_evaluations se
+                        JOIN submissions s ON s.id = se.submission_id
+                        JOIN teams t ON t.id = s.team_id
+                        JOIN problems p ON p.id = s.problem_id
+                        LEFT JOIN events e ON e.id = se.event_id
+                        LEFT JOIN event_teams et ON et.id = s.event_team_id
+                    """
+                    params = []
+                    if submission_id:
+                        query += " WHERE se.submission_id = ?"
+                        params.append(submission_id)
+                    query += " ORDER BY se.created_at DESC"
+                    rows = [dict(r) for r in connection.execute(query, tuple(params)).fetchall()]
+                self.send_json({"evaluations": rows})
+                return
+            else:
+                self.send_json({"evaluations": []})
+                return
+        if path == "/api/reports":
+            user = self.require_roles("admin", "judge", "mentor")
+            if not user:
+                return
+            if DEMO_MODE:
+                with demo_db_connection() as connection:
+                    connection.row_factory = sqlite3.Row
+                    rows = [dict(r) for r in connection.execute("""
+                        SELECT s.id AS submission_id, s.event_id, s.score, s.status, s.evaluation_status,
+                               s.submitted_at, s.repository_url, s.checks_passed, s.checks_total,
+                               COALESCE(et.team_name, t.name) AS team, p.title AS problem, e.name AS event_name,
+                               (s.evaluation_report_json <> '{}' AND s.evaluation_report_json <> '') AS has_report
+                        FROM submissions s
+                        JOIN teams t ON t.id = s.team_id
+                        JOIN problems p ON p.id = s.problem_id
+                        LEFT JOIN events e ON e.id = s.event_id
+                        LEFT JOIN event_teams et ON et.id = s.event_team_id
+                        ORDER BY s.submitted_at DESC
+                    """).fetchall()]
+                self.send_json({"reports": rows})
+                return
+            else:
+                data = load_data()
+                self.send_json({"reports": []})
+                return
         report_match = re.fullmatch(r"/api/reports/([A-Za-z0-9_-]{1,128})(?:/([A-Za-z0-9_-]{1,128}))?", path)
         if report_match:
             user = self.require_roles("admin", "judge", "mentor")
@@ -2767,8 +2902,21 @@ class Handler(BaseHTTPRequestHandler):
                 else:
                     self.send_json({"error":"Historical evaluation not found."},404);return
             if not submission or not isinstance(submission.get("evaluation_report"), dict) or not submission["evaluation_report"]:
+                if DEMO_MODE and submission:
+                    with demo_db_connection() as connection:
+                        connection.row_factory = sqlite3.Row
+                        ev = connection.execute("SELECT report_json, config_version, evaluation_status FROM submission_evaluations WHERE submission_id=? ORDER BY created_at DESC LIMIT 1", (submission_id,)).fetchone()
+                        if ev:
+                            try:
+                                submission["evaluation_report"] = json.loads(ev["report_json"])
+                                submission["config_version"] = ev["config_version"]
+                                submission["evaluation_status"] = ev["evaluation_status"]
+                            except Exception:
+                                pass
+            if not submission or not isinstance(submission.get("evaluation_report"), dict) or not submission["evaluation_report"]:
                 self.send_json({"error": "Reviewer report not found."}, 404)
                 return
+
             report_payload = {"submission":{"id":submission_id,"team":submission.get("team",""),
                                              "problem":submission.get("problem",""),
                                              "repository_url":submission.get("repository_url",""),
@@ -3382,7 +3530,7 @@ class Handler(BaseHTTPRequestHandler):
                 except ValueError as exc:
                     self.send_json({"error": str(exc)}, 400); return
                 problem = {"id": uuid.uuid4().hex[:12], "title": title, "description": description,
-                           "created_at": datetime.now(timezone.utc).isoformat(), "rubric": SEED["problems"][0]["rubric"],
+                           "created_at": datetime.now(timezone.utc).isoformat(), "rubric": [],
                            "language": "python", "function_name": function_name, "solution_file": solution_file, "test_cases": test_cases}
                 if reference_dataset:
                     problem["reference_dataset"] = reference_dataset
