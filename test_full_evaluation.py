@@ -2,6 +2,7 @@ import json
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import genuine_handlers
@@ -138,6 +139,7 @@ class FullEvaluationSelectionTests(unittest.TestCase):
         self.assertEqual(merged["score"], round(2 / 3 * 100))  # 67%
         self.assertEqual(merged["status"], "Flagged")
 
+    @patch.object(server, "DEMO_MODE", False)
     def test_apply_event_configuration_report_executed_count(self):
         """apply_event_configuration_report accurately populates executed_test_count and eligible_test_count."""
         report = {"test_analysis": {}}
@@ -155,6 +157,7 @@ class FullEvaluationSelectionTests(unittest.TestCase):
         self.assertEqual(res["configuration"]["executed_test_count"], 3)
         self.assertEqual(len(res["catalogue_results"]), 3)
 
+    @patch.object(server, "DEMO_MODE", False)
     def test_end_to_end_full_catalogue_evaluation_produces_all_224_results(self):
         """Full catalogue evaluation produces 224 unique, valid results with correct scoring denominator."""
         files = [
