@@ -1,0 +1,4238 @@
+{
+  "schema_version": "1.0",
+  "generated_from": "audit_repository.py",
+  "handlers": [
+    {
+      "id": "API-001",
+      "catalogue_requirement": "Health endpoint",
+      "handler": "handler_api_001",
+      "source": "genuine_handlers.handler_api_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Health endpoint route defined: '/v1/health'",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-002",
+      "catalogue_requirement": "Valid request schema",
+      "handler": "handler_api_002",
+      "source": "genuine_handlers.handler_api_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Request schema validation library or model definitions found.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-003",
+      "catalogue_requirement": "Malformed JSON",
+      "handler": "handler_api_003",
+      "source": "genuine_handlers.handler_api_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "All 5 JSON file(s) are syntactically valid.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-004",
+      "catalogue_requirement": "Unsupported HTTP method",
+      "handler": "handler_api_004",
+      "source": "genuine_handlers.handler_api_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "HTTP method restrictions and status routing enforced.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-005",
+      "catalogue_requirement": "Missing content type",
+      "handler": "handler_api_005",
+      "source": "genuine_handlers.handler_api_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Content-Type header inspection enforced.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-006",
+      "catalogue_requirement": "Missing authentication",
+      "handler": "handler_api_006",
+      "source": "genuine_handlers.handler_api_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "API authentication middleware or header check detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-007",
+      "catalogue_requirement": "Insufficient permissions",
+      "handler": "handler_api_007",
+      "source": "genuine_handlers.handler_api_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Permission checking and 403 status handling implemented.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-008",
+      "catalogue_requirement": "Upstream service unavailable",
+      "handler": "handler_api_008",
+      "source": "genuine_handlers.handler_api_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Upstream failure or timeout handling present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-009",
+      "catalogue_requirement": "Database unavailable",
+      "handler": "handler_api_009",
+      "source": "genuine_handlers.handler_api_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Database connection exception handling detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-010",
+      "catalogue_requirement": "Concurrent requests",
+      "handler": "handler_api_010",
+      "source": "genuine_handlers.handler_api_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "API handlers are reentrant and handle concurrent execution.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-011",
+      "catalogue_requirement": "Request timeout",
+      "handler": "handler_api_011",
+      "source": "genuine_handlers.handler_api_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Explicit request timeouts configured on outbound calls.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-012",
+      "catalogue_requirement": "Rate-limit threshold",
+      "handler": "handler_api_012",
+      "source": "genuine_handlers.handler_api_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Rate limiting policies or 429 status handling present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-013",
+      "catalogue_requirement": "Pagination",
+      "handler": "handler_api_013",
+      "source": "genuine_handlers.handler_api_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Pagination parameters (limit/offset/page) supported.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-014",
+      "catalogue_requirement": "Version compatibility",
+      "handler": "handler_api_014",
+      "source": "genuine_handlers.handler_api_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "API versioning prefix detected (/v1/, /v2/).",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "API-015",
+      "catalogue_requirement": "CORS configuration",
+      "handler": "handler_api_015",
+      "source": "genuine_handlers.handler_api_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "CORS middleware or origin configuration present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "API and Integration Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "DATA-001",
+      "catalogue_requirement": "Schema validation",
+      "handler": "handler_data_001",
+      "source": "genuine_handlers.handler_data_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data schema definitions detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-002",
+      "catalogue_requirement": "Type validation",
+      "handler": "handler_data_002",
+      "source": "genuine_handlers.handler_data_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Column and record type validation rules enforced.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-003",
+      "catalogue_requirement": "Null handling",
+      "handler": "handler_data_003",
+      "source": "genuine_handlers.handler_data_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Null/NaN value handling detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-004",
+      "catalogue_requirement": "Duplicate handling",
+      "handler": "handler_data_004",
+      "source": "genuine_handlers.handler_data_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Duplicate record elimination patterns detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-005",
+      "catalogue_requirement": "Transformation correctness",
+      "handler": "handler_data_005",
+      "source": "genuine_handlers.handler_data_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data transformation pipelines verified.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-006",
+      "catalogue_requirement": "Idempotency",
+      "handler": "handler_data_006",
+      "source": "genuine_handlers.handler_data_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data pipeline executions are idempotent.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-007",
+      "catalogue_requirement": "Missing records",
+      "handler": "handler_data_007",
+      "source": "genuine_handlers.handler_data_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Record counting or empty collection guards present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-008",
+      "catalogue_requirement": "Late-arriving records",
+      "handler": "handler_data_008",
+      "source": "genuine_handlers.handler_data_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Timestamping logic for event sequencing detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-009",
+      "catalogue_requirement": "Out-of-order events",
+      "handler": "handler_data_009",
+      "source": "genuine_handlers.handler_data_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Explicit sorting/ordering logic handles out-of-order events.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-010",
+      "catalogue_requirement": "Data lineage",
+      "handler": "handler_data_010",
+      "source": "genuine_handlers.handler_data_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data source and target flow definitions detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-011",
+      "catalogue_requirement": "Data quality constraints",
+      "handler": "handler_data_011",
+      "source": "genuine_handlers.handler_data_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data quality assertions detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-012",
+      "catalogue_requirement": "Large-file processing",
+      "handler": "handler_data_012",
+      "source": "genuine_handlers.handler_data_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Batch or streaming chunks for large file processing detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-013",
+      "catalogue_requirement": "Pipeline retry handling",
+      "handler": "handler_data_013",
+      "source": "genuine_handlers.handler_data_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Pipeline retry and backoff logic detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-014",
+      "catalogue_requirement": "Partial pipeline failure",
+      "handler": "handler_data_014",
+      "source": "genuine_handlers.handler_data_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Transaction rollback or exception isolation detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DATA-015",
+      "catalogue_requirement": "Transaction consistency",
+      "handler": "handler_data_015",
+      "source": "genuine_handlers.handler_data_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Database transaction boundaries enforced.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Data Engineering Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-001",
+      "catalogue_requirement": "Python API repository detection",
+      "handler": "handler_det_001",
+      "source": "genuine_handlers.handler_det_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Python API framework patterns detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-002",
+      "catalogue_requirement": "React frontend detection",
+      "handler": "handler_det_002",
+      "source": "genuine_handlers.handler_det_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "React frontend components detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-003",
+      "catalogue_requirement": "React and Python full-stack detection",
+      "handler": "handler_det_003",
+      "source": "genuine_handlers.handler_det_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Full-stack Python backend and React frontend detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-004",
+      "catalogue_requirement": "ML notebook repository detection",
+      "handler": "handler_det_004",
+      "source": "genuine_handlers.handler_det_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "No Jupyter Notebook (.ipynb) files found.",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-005",
+      "catalogue_requirement": "AI agent project detection",
+      "handler": "handler_det_005",
+      "source": "genuine_handlers.handler_det_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "AI agent or LLM orchestration patterns detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-006",
+      "catalogue_requirement": "Multiple programming languages",
+      "handler": "handler_det_006",
+      "source": "genuine_handlers.handler_det_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Multiple languages detected: Go, HTML, Python",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-007",
+      "catalogue_requirement": "Conflicting project indicators",
+      "handler": "handler_det_007",
+      "source": "genuine_handlers.handler_det_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "No conflicting project configuration indicators detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-008",
+      "catalogue_requirement": "Misleading README",
+      "handler": "handler_det_008",
+      "source": "genuine_handlers.handler_det_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "README is consistent with repository contents.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-009",
+      "catalogue_requirement": "Unknown framework",
+      "handler": "handler_det_009",
+      "source": "genuine_handlers.handler_det_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Recognized framework or standard structure detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "DET-010",
+      "catalogue_requirement": "Mixed project categories",
+      "handler": "handler_det_010",
+      "source": "genuine_handlers.handler_det_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Mixed project categories identified: Web, Data",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Project Detection and Test Selection",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ES-001",
+      "catalogue_requirement": "Authentication bypass",
+      "handler": "handler_es_001",
+      "source": "genuine_handlers.handler_es_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Static authentication bypass flag detected in source.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-002",
+      "catalogue_requirement": "Role escalation",
+      "handler": "handler_es_002",
+      "source": "genuine_handlers.handler_es_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Direct user-controlled role assignment pattern found.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-003",
+      "catalogue_requirement": "Unauthorized job-ID access",
+      "handler": "handler_es_003",
+      "source": "genuine_handlers.handler_es_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Job ID authorization check passed.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-004",
+      "catalogue_requirement": "Server-side request forgery through repository URLs",
+      "handler": "handler_es_004",
+      "source": "genuine_handlers.handler_es_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Missing repository URL.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-005",
+      "catalogue_requirement": "DNS rebinding and redirect restrictions",
+      "handler": "handler_es_005",
+      "source": "genuine_handlers.handler_es_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Repository must use secure HTTPS protocol.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-006",
+      "catalogue_requirement": "Malicious Git submodules",
+      "handler": "handler_es_006",
+      "source": "genuine_handlers.handler_es_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "No insecure Git submodules detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-007",
+      "catalogue_requirement": "Dependency confusion",
+      "handler": "handler_es_007",
+      "source": "genuine_handlers.handler_es_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Package registry configurations enforce secure indexes.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-008",
+      "catalogue_requirement": "Log forging",
+      "handler": "handler_es_008",
+      "source": "genuine_handlers.handler_es_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "No log-forging carriage return or newline vectors found.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-009",
+      "catalogue_requirement": "HTML and Markdown injection",
+      "handler": "handler_es_009",
+      "source": "genuine_handlers.handler_es_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Documentation files are free from script injection vectors.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-010",
+      "catalogue_requirement": "Secret exposure in reports",
+      "handler": "handler_es_010",
+      "source": "genuine_handlers.handler_es_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Plaintext credentials detected; exposure mitigation required.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-011",
+      "catalogue_requirement": "Queue exhaustion",
+      "handler": "handler_es_011",
+      "source": "genuine_handlers.handler_es_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Evaluation request conforms to concurrency limits.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-012",
+      "catalogue_requirement": "Oversized repository submissions",
+      "handler": "handler_es_012",
+      "source": "genuine_handlers.handler_es_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Submission limits exceeded: 110 files, 4,227,238 bytes, 0 oversized.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-013",
+      "catalogue_requirement": "Repeated-submission abuse",
+      "handler": "handler_es_013",
+      "source": "genuine_handlers.handler_es_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Submission deduplication parameters verified.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-014",
+      "catalogue_requirement": "Race conditions during cancellation",
+      "handler": "handler_es_014",
+      "source": "genuine_handlers.handler_es_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Unsynchronized cancellation state mutation pattern detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-015",
+      "catalogue_requirement": "Cross-tenant cache leakage",
+      "handler": "handler_es_015",
+      "source": "genuine_handlers.handler_es_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Shared unpartitioned cache key pattern detected in submission.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-016",
+      "catalogue_requirement": "Cross-tenant artifact leakage",
+      "handler": "handler_es_016",
+      "source": "genuine_handlers.handler_es_016",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Unsandboxed shared build artifact directory detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-017",
+      "catalogue_requirement": "Container escape resistance",
+      "handler": "handler_es_017",
+      "source": "genuine_handlers.handler_es_017",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Container escape or namespace piercing pattern detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-018",
+      "catalogue_requirement": "Stale job cleanup",
+      "handler": "handler_es_018",
+      "source": "genuine_handlers.handler_es_018",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Configuration disables stale job cleanup.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-019",
+      "catalogue_requirement": "Orphaned worker cleanup",
+      "handler": "handler_es_019",
+      "source": "genuine_handlers.handler_es_019",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Worker spawns detached background process without parent tracking.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-020",
+      "catalogue_requirement": "Resource leak detection",
+      "handler": "handler_es_020",
+      "source": "genuine_handlers.handler_es_020",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "No unreleased file descriptors or zombie threads detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-021",
+      "catalogue_requirement": "Rubric tampering",
+      "handler": "handler_es_021",
+      "source": "genuine_handlers.handler_es_021",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Attempted client-side modification of rubric weights.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ES-022",
+      "catalogue_requirement": "Evaluator configuration tampering",
+      "handler": "handler_es_022",
+      "source": "genuine_handlers.handler_es_022",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Evaluator core configuration immutable.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Evaluator Security and Abuse Prevention",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-001",
+      "catalogue_requirement": "Valid input",
+      "handler": "handler_func_001",
+      "source": "genuine_handlers.handler_func_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Valid structured files accepted and processed.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-002",
+      "catalogue_requirement": "Empty input",
+      "handler": "handler_func_002",
+      "source": "genuine_handlers.handler_func_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Empty input checks or empty string guards present in source.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-003",
+      "catalogue_requirement": "Missing required field",
+      "handler": "handler_func_003",
+      "source": "genuine_handlers.handler_func_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Required field validation and exceptions present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-004",
+      "catalogue_requirement": "Invalid data type",
+      "handler": "handler_func_004",
+      "source": "genuine_handlers.handler_func_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data type checking and validation implemented.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-005",
+      "catalogue_requirement": "Boundary values",
+      "handler": "handler_func_005",
+      "source": "genuine_handlers.handler_func_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Numeric boundary value checks implemented.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-006",
+      "catalogue_requirement": "Very large input",
+      "handler": "handler_func_006",
+      "source": "genuine_handlers.handler_func_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Oversized input rejected: 4,227,238 bytes.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-007",
+      "catalogue_requirement": "Duplicate request",
+      "handler": "handler_func_007",
+      "source": "genuine_handlers.handler_func_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Non-idempotent operation executes without deduplication safeguard.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-008",
+      "catalogue_requirement": "Repeated execution",
+      "handler": "handler_func_008",
+      "source": "genuine_handlers.handler_func_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Shared mutable default or state leakage between repeated runs detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-009",
+      "catalogue_requirement": "Invalid operation",
+      "handler": "handler_func_009",
+      "source": "genuine_handlers.handler_func_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Invalid operations return appropriate error responses.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-010",
+      "catalogue_requirement": "State transition",
+      "handler": "handler_func_010",
+      "source": "genuine_handlers.handler_func_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "State machine transition logic detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-011",
+      "catalogue_requirement": "Data persistence",
+      "handler": "handler_func_011",
+      "source": "genuine_handlers.handler_func_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Data persistence operations detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "FUNC-012",
+      "catalogue_requirement": "Regression testing",
+      "handler": "handler_func_012",
+      "source": "genuine_handlers.handler_func_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Regression test suite present (25 test files).",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Universal Functional Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "ML-001",
+      "catalogue_requirement": "Dataset schema validation",
+      "handler": "handler_ml_001",
+      "source": "genuine_handlers.handler_ml_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Machine learning feature and target schema defined.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-002",
+      "catalogue_requirement": "Train/test contamination",
+      "handler": "handler_ml_002",
+      "source": "genuine_handlers.handler_ml_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Dataset partitioning separates train and test sets.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-003",
+      "catalogue_requirement": "Feature leakage",
+      "handler": "handler_ml_003",
+      "source": "genuine_handlers.handler_ml_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Transformers fitted on training data and applied to test data.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-004",
+      "catalogue_requirement": "Baseline model comparison",
+      "handler": "handler_ml_004",
+      "source": "genuine_handlers.handler_ml_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Baseline model or benchmark comparisons implemented.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-005",
+      "catalogue_requirement": "Cross-validation correctness",
+      "handler": "handler_ml_005",
+      "source": "genuine_handlers.handler_ml_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "K-fold or stratified cross-validation routines present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-006",
+      "catalogue_requirement": "Hyperparameter leakage",
+      "handler": "handler_ml_006",
+      "source": "genuine_handlers.handler_ml_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Hyperparameter tuning encapsulated within search pipeline.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-007",
+      "catalogue_requirement": "Overfitting detection",
+      "handler": "handler_ml_007",
+      "source": "genuine_handlers.handler_ml_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Validation monitoring or early stopping detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-008",
+      "catalogue_requirement": "Underfitting detection",
+      "handler": "handler_ml_008",
+      "source": "genuine_handlers.handler_ml_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Model training parameters configured for adequate convergence.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-009",
+      "catalogue_requirement": "Class imbalance evaluation",
+      "handler": "handler_ml_009",
+      "source": "genuine_handlers.handler_ml_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Class imbalance mitigation (weighting, stratification) present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-010",
+      "catalogue_requirement": "Metric calculation correctness",
+      "handler": "handler_ml_010",
+      "source": "genuine_handlers.handler_ml_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Standard evaluation metrics calculated.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-011",
+      "catalogue_requirement": "Threshold sensitivity",
+      "handler": "handler_ml_011",
+      "source": "genuine_handlers.handler_ml_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Decision threshold or probability calibration present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-012",
+      "catalogue_requirement": "Probability calibration",
+      "handler": "handler_ml_012",
+      "source": "genuine_handlers.handler_ml_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Probability calibration methods present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-013",
+      "catalogue_requirement": "Feature importance stability",
+      "handler": "handler_ml_013",
+      "source": "genuine_handlers.handler_ml_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Feature importance or attribution analysis found.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-014",
+      "catalogue_requirement": "Reproducibility",
+      "handler": "handler_ml_014",
+      "source": "genuine_handlers.handler_ml_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Random seed explicitly set for reproducible execution.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-015",
+      "catalogue_requirement": "Model serialization",
+      "handler": "handler_ml_015",
+      "source": "genuine_handlers.handler_ml_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Model persistence and serialization logic detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-016",
+      "catalogue_requirement": "Inference schema validation",
+      "handler": "handler_ml_016",
+      "source": "genuine_handlers.handler_ml_016",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Inference payload input schema validated.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-017",
+      "catalogue_requirement": "Out-of-distribution inputs",
+      "handler": "handler_ml_017",
+      "source": "genuine_handlers.handler_ml_017",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Input feature clipping or bound checking detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-018",
+      "catalogue_requirement": "Data drift detection",
+      "handler": "handler_ml_018",
+      "source": "genuine_handlers.handler_ml_018",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Distribution check or data drift monitoring present.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-019",
+      "catalogue_requirement": "Model drift monitoring",
+      "handler": "handler_ml_019",
+      "source": "genuine_handlers.handler_ml_019",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Model drift monitoring and retraining triggers detected.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "ML-020",
+      "catalogue_requirement": "Batch inference performance",
+      "handler": "handler_ml_020",
+      "source": "genuine_handlers.handler_ml_020",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Batch inference routines implemented.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Additional Machine Learning / Data Science Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "RE-001",
+      "catalogue_requirement": "Public valid repository",
+      "handler": "handler_re_001",
+      "source": "genuine_handlers.handler_re_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "No repository URL provided.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-002",
+      "catalogue_requirement": "Private repository without credentials",
+      "handler": "handler_re_002",
+      "source": "genuine_handlers.handler_re_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "No private credentials provided; unauthenticated access verified.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-003",
+      "catalogue_requirement": "Invalid repository URL",
+      "handler": "handler_re_003",
+      "source": "genuine_handlers.handler_re_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Enter a public GitHub repository URL like https://github.com/owner/repository.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-004",
+      "catalogue_requirement": "Unsupported repository host",
+      "handler": "handler_re_004",
+      "source": "genuine_handlers.handler_re_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "No repository URL provided.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-005",
+      "catalogue_requirement": "Repository not found",
+      "handler": "handler_re_005",
+      "source": "genuine_handlers.handler_re_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Target repository does not exist or returned 404.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-006",
+      "catalogue_requirement": "Empty repository",
+      "handler": "handler_re_006",
+      "source": "genuine_handlers.handler_re_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Repository contains 110 file(s).",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-007",
+      "catalogue_requirement": "Unsupported programming language",
+      "handler": "handler_re_007",
+      "source": "genuine_handlers.handler_re_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Detected from source-file extensions: Go, HTML, Python.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-008",
+      "catalogue_requirement": "Missing dependency manifest",
+      "handler": "handler_re_008",
+      "source": "genuine_handlers.handler_re_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Dependency manifest found: go.mod",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-009",
+      "catalogue_requirement": "Dependency installation failure",
+      "handler": "handler_re_009",
+      "source": "genuine_handlers.handler_re_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Dependency manifests declare parseable version constraints.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-010",
+      "catalogue_requirement": "Build failure",
+      "handler": "handler_re_010",
+      "source": "genuine_handlers.handler_re_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Build/syntax error in server_clean.py: unexpected indent",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-011",
+      "catalogue_requirement": "Unit-test failure",
+      "handler": "handler_re_011",
+      "source": "genuine_handlers.handler_re_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Test files contain valid test structures without syntax failures.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-012",
+      "catalogue_requirement": "No tests supplied",
+      "handler": "handler_re_012",
+      "source": "genuine_handlers.handler_re_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Add a file named with test or spec",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-013",
+      "catalogue_requirement": "Test process timeout",
+      "handler": "handler_re_013",
+      "source": "genuine_handlers.handler_re_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Potential test timeout condition detected in source.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-014",
+      "catalogue_requirement": "Infinite-loop program",
+      "handler": "handler_re_014",
+      "source": "genuine_handlers.handler_re_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Unbounded infinite loop pattern detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-015",
+      "catalogue_requirement": "Memory-exhaustion program",
+      "handler": "handler_re_015",
+      "source": "genuine_handlers.handler_re_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Potential memory exhaustion allocation detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-016",
+      "catalogue_requirement": "Excessive process spawning",
+      "handler": "handler_re_016",
+      "source": "genuine_handlers.handler_re_016",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Process bomb / unbounded fork detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-017",
+      "catalogue_requirement": "Disk-filling program",
+      "handler": "handler_re_017",
+      "source": "genuine_handlers.handler_re_017",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Disk fill pattern detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-018",
+      "catalogue_requirement": "Unauthorized network access",
+      "handler": "handler_re_018",
+      "source": "genuine_handlers.handler_re_018",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Direct internal socket / network probe pattern detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-019",
+      "catalogue_requirement": "Host filesystem access attempt",
+      "handler": "handler_re_019",
+      "source": "genuine_handlers.handler_re_019",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Direct host system path access detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-020",
+      "catalogue_requirement": "Surviving child processes after timeout",
+      "handler": "handler_re_020",
+      "source": "genuine_handlers.handler_re_020",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Process lifecycle guarantees clean child termination.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-021",
+      "catalogue_requirement": "Malicious dependency installation script",
+      "handler": "handler_re_021",
+      "source": "genuine_handlers.handler_re_021",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Package setup and build scripts contain no malicious hooks.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-022",
+      "catalogue_requirement": "Runaway process fixture",
+      "handler": "handler_re_022",
+      "source": "genuine_handlers.handler_re_022",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Runaway test fixture detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-023",
+      "catalogue_requirement": "Secret scanning",
+      "handler": "handler_re_023",
+      "source": "genuine_handlers.handler_re_023",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Credential-like literal found; move secrets to environment variables or a secret store. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-024",
+      "catalogue_requirement": "Static security scan",
+      "handler": "handler_re_024",
+      "source": "genuine_handlers.handler_re_024",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Static security scan identified 8 issue(s): Credential-like literal found; move secrets to environment variables or a secret store. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-025",
+      "catalogue_requirement": "False-positive security fixture",
+      "handler": "handler_re_025",
+      "source": "genuine_handlers.handler_re_025",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Security scan correctly avoids false-positive findings on test fixtures.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-026",
+      "catalogue_requirement": "Repository changes during evaluation",
+      "handler": "handler_re_026",
+      "source": "genuine_handlers.handler_re_026",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Repository immutability preserved throughout evaluation.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-027",
+      "catalogue_requirement": "Concurrent evaluations",
+      "handler": "handler_re_027",
+      "source": "genuine_handlers.handler_re_027",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Potential deadlock or stale lock condition detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-028",
+      "catalogue_requirement": "Container cleanup",
+      "handler": "handler_re_028",
+      "source": "genuine_handlers.handler_re_028",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Container cleanup evasion flag detected.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-029",
+      "catalogue_requirement": "Interrupted evaluation",
+      "handler": "handler_re_029",
+      "source": "genuine_handlers.handler_re_029",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Evaluation completed without interruption.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-030",
+      "catalogue_requirement": "Evaluator restart recovery",
+      "handler": "handler_re_030",
+      "source": "genuine_handlers.handler_re_030",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Corrupted checkpoint state prevents restart recovery.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-031",
+      "catalogue_requirement": "Report generation correctness",
+      "handler": "handler_re_031",
+      "source": "genuine_handlers.handler_re_031",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Report generation data validated for 110 file(s).",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-032",
+      "catalogue_requirement": "Report injection",
+      "handler": "handler_re_032",
+      "source": "genuine_handlers.handler_re_032",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Report generation outputs sanitized against injection.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-033",
+      "catalogue_requirement": "Missing scanner",
+      "handler": "handler_re_033",
+      "source": "genuine_handlers.handler_re_033",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "All configured scanners and analysis tools are available.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-034",
+      "catalogue_requirement": "Repeated evaluation reproducibility",
+      "handler": "handler_re_034",
+      "source": "genuine_handlers.handler_re_034",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Unseeded randomization detected in evaluation pipeline.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-035",
+      "catalogue_requirement": "API rate-limit handling",
+      "handler": "handler_re_035",
+      "source": "genuine_handlers.handler_re_035",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Evaluation conforms to API rate limits.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-036",
+      "catalogue_requirement": "Malicious archive or oversized repository",
+      "handler": "handler_re_036",
+      "source": "genuine_handlers.handler_re_036",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Repository exceeds bounded evaluation limits (110 files, 4,227,238 bytes).",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-037",
+      "catalogue_requirement": "Cross-user job access",
+      "handler": "handler_re_037",
+      "source": "genuine_handlers.handler_re_037",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Job execution strictly isolated to submitting user/team.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-038",
+      "catalogue_requirement": "Scoring manipulation",
+      "handler": "handler_re_038",
+      "source": "genuine_handlers.handler_re_038",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Submission attempts to override evaluation scoring.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-039",
+      "catalogue_requirement": "Cancellation and cleanup",
+      "handler": "handler_re_039",
+      "source": "genuine_handlers.handler_re_039",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Signal handler explicitly ignores termination signals.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "RE-040",
+      "catalogue_requirement": "End-to-end evaluation",
+      "handler": "handler_re_040",
+      "source": "genuine_handlers.handler_re_040",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "End-to-end evaluation pipeline completed successfully (110 files).",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Repository / Code Evaluator Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-001",
+      "catalogue_requirement": "All applicable tests pass",
+      "handler": "handler_score_001",
+      "source": "genuine_handlers.handler_score_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Score calculation accurately reflects 100% pass rate when all tests pass.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-002",
+      "catalogue_requirement": "One test fails",
+      "handler": "handler_score_002",
+      "source": "genuine_handlers.handler_score_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Score deduction accurately applied for failing test outcomes.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-003",
+      "catalogue_requirement": "Critical security failure",
+      "handler": "handler_score_003",
+      "source": "genuine_handlers.handler_score_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Security disqualification bypass detected in submission.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-004",
+      "catalogue_requirement": "Not-applicable test exclusion",
+      "handler": "handler_score_004",
+      "source": "genuine_handlers.handler_score_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Not-applicable checks excluded from scoring denominator.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-005",
+      "catalogue_requirement": "Blocked test handling",
+      "handler": "handler_score_005",
+      "source": "genuine_handlers.handler_score_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Blocked tests recorded explicitly and excluded from passing totals.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-006",
+      "catalogue_requirement": "Skipped test handling",
+      "handler": "handler_score_006",
+      "source": "genuine_handlers.handler_score_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Skipped tests documented with truthful status in report.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-007",
+      "catalogue_requirement": "Zero executed tests",
+      "handler": "handler_score_007",
+      "source": "genuine_handlers.handler_score_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Zero executed tests safely yields 0 score without division-by-zero.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-008",
+      "catalogue_requirement": "Missing category normalization",
+      "handler": "handler_score_008",
+      "source": "genuine_handlers.handler_score_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Category score normalization computes balanced weights.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-009",
+      "catalogue_requirement": "Duplicate result prevention",
+      "handler": "handler_score_009",
+      "source": "genuine_handlers.handler_score_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Deduplication ensures each catalogue ID appears once in scorecard.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-010",
+      "catalogue_requirement": "Repeated report consistency",
+      "handler": "handler_score_010",
+      "source": "genuine_handlers.handler_score_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Scores generated repeatedly against identical submissions are invariant.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-011",
+      "catalogue_requirement": "Invalid scoring weights",
+      "handler": "handler_score_011",
+      "source": "genuine_handlers.handler_score_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Negative or NaN scoring weights rejected at validation boundary.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-012",
+      "catalogue_requirement": "Missing evidence",
+      "handler": "handler_score_012",
+      "source": "genuine_handlers.handler_score_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Scoring evidence backed by 110 project files.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-013",
+      "catalogue_requirement": "Scanner crash handling",
+      "handler": "handler_score_013",
+      "source": "genuine_handlers.handler_score_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Unhandled exceptions in checks isolated as 'error' without crashing pipeline.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-014",
+      "catalogue_requirement": "Human override audit trail",
+      "handler": "handler_score_014",
+      "source": "genuine_handlers.handler_score_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Judge overrides require signed audit trail entries.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SCORE-015",
+      "catalogue_requirement": "Exported report consistency",
+      "handler": "handler_score_015",
+      "source": "genuine_handlers.handler_score_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "JSON and HTML report exports represent consistent score metrics.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Scoring and Report Integrity",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "SEC-001",
+      "catalogue_requirement": "Hardcoded secret detection",
+      "handler": "handler_sec_001",
+      "source": "genuine_handlers.handler_sec_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Credential-like literal found; move secrets to environment variables or a secret store. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-002",
+      "catalogue_requirement": "SQL injection",
+      "handler": "handler_sec_002",
+      "source": "genuine_handlers.handler_sec_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "SQL query appears to interpolate or concatenate values; use parameterized queries. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-003",
+      "catalogue_requirement": "Cross-site scripting (XSS)",
+      "handler": "handler_sec_003",
+      "source": "genuine_handlers.handler_sec_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "HTML injection sink found; confirm untrusted content is escaped or sanitized. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-004",
+      "catalogue_requirement": "Path traversal",
+      "handler": "handler_sec_004",
+      "source": "genuine_handlers.handler_sec_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "File access may use user-controlled path data; validate paths stay within an allowed directory. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-005",
+      "catalogue_requirement": "Unauthorized access",
+      "handler": "handler_sec_005",
+      "source": "genuine_handlers.handler_sec_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "A hard-coded admin/allow-all pattern was found; verify authorization is enforced per request. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-006",
+      "catalogue_requirement": "Broken object-level authorization",
+      "handler": "handler_sec_006",
+      "source": "genuine_handlers.handler_sec_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Missing user ownership check in query (potential BOLA/IDOR).",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-007",
+      "catalogue_requirement": "Sensitive data in logs",
+      "handler": "handler_sec_007",
+      "source": "genuine_handlers.handler_sec_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Potential logging of sensitive credentials detected.",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-008",
+      "catalogue_requirement": "Unsafe deserialization",
+      "handler": "handler_sec_008",
+      "source": "genuine_handlers.handler_sec_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Unsafe deserialization API found; accept only trusted data or use a safe parser. (audit_generator.py)",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-009",
+      "catalogue_requirement": "Dependency vulnerabilities",
+      "handler": "handler_sec_009",
+      "source": "genuine_handlers.handler_sec_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Known vulnerable dependency version detected: flask==0.12",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-010",
+      "catalogue_requirement": "Server-side request forgery (SSRF)",
+      "handler": "handler_sec_010",
+      "source": "genuine_handlers.handler_sec_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Missing repository URL.",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-011",
+      "catalogue_requirement": "Oversized payload",
+      "handler": "handler_sec_011",
+      "source": "genuine_handlers.handler_sec_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Payload size limits exceeded (110 files, 4,227,238 bytes).",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-012",
+      "catalogue_requirement": "Security headers",
+      "handler": "handler_sec_012",
+      "source": "genuine_handlers.handler_sec_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Security header policies or middleware configured.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-013",
+      "catalogue_requirement": "Debug mode exposure",
+      "handler": "handler_sec_013",
+      "source": "genuine_handlers.handler_sec_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Production entrypoint exposes unconstrained debug mode.",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-014",
+      "catalogue_requirement": "Session handling",
+      "handler": "handler_sec_014",
+      "source": "genuine_handlers.handler_sec_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Insecure cookie session attributes (missing HttpOnly).",
+      "status": "FAILED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "SEC-015",
+      "catalogue_requirement": "Sandbox isolation",
+      "handler": "handler_sec_015",
+      "source": "genuine_handlers.handler_sec_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Execution environment maintains sandbox boundaries.",
+      "status": "VERIFIED",
+      "runtime_limitation": "",
+      "catalogue_category": "Security and Privacy Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": ""
+    },
+    {
+      "id": "WEB-001",
+      "catalogue_requirement": "Page rendering",
+      "handler": "handler_web_001",
+      "source": "genuine_handlers.handler_web_001",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "HTML or frontend template files found for page rendering.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-002",
+      "catalogue_requirement": "Route navigation",
+      "handler": "handler_web_002",
+      "source": "genuine_handlers.handler_web_002",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Routing definitions or link structures detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-003",
+      "catalogue_requirement": "Direct URL access",
+      "handler": "handler_web_003",
+      "source": "genuine_handlers.handler_web_003",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Direct URL route handling supported.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-004",
+      "catalogue_requirement": "Refresh on nested route",
+      "handler": "handler_web_004",
+      "source": "genuine_handlers.handler_web_004",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "SPA fallback or server-side routing handles nested routes.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-005",
+      "catalogue_requirement": "Form submission",
+      "handler": "handler_web_005",
+      "source": "genuine_handlers.handler_web_005",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Form elements or submission handlers detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-006",
+      "catalogue_requirement": "Client-side validation",
+      "handler": "handler_web_006",
+      "source": "genuine_handlers.handler_web_006",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Client-side validation constraints or handlers found.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-007",
+      "catalogue_requirement": "Server-side validation",
+      "handler": "handler_web_007",
+      "source": "genuine_handlers.handler_web_007",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Server-side payload and form validation logic present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-008",
+      "catalogue_requirement": "Responsive breakpoints",
+      "handler": "handler_web_008",
+      "source": "genuine_handlers.handler_web_008",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Responsive CSS media queries or responsive utility classes detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-009",
+      "catalogue_requirement": "Browser compatibility",
+      "handler": "handler_web_009",
+      "source": "genuine_handlers.handler_web_009",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Obsolete non-standard browser APIs detected (e.g., document.all/attachEvent).",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-010",
+      "catalogue_requirement": "Accessibility audit",
+      "handler": "handler_web_010",
+      "source": "genuine_handlers.handler_web_010",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Accessibility attributes (ARIA, alt, role) detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-011",
+      "catalogue_requirement": "Image loading failures",
+      "handler": "handler_web_011",
+      "source": "genuine_handlers.handler_web_011",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "No image error handling or alt text found.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-012",
+      "catalogue_requirement": "Broken links",
+      "handler": "handler_web_012",
+      "source": "genuine_handlers.handler_web_012",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Dead link reference found in web markup.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-013",
+      "catalogue_requirement": "Authentication redirects",
+      "handler": "handler_web_013",
+      "source": "genuine_handlers.handler_web_013",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Authentication redirect handling present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-014",
+      "catalogue_requirement": "Protected route enforcement",
+      "handler": "handler_web_014",
+      "source": "genuine_handlers.handler_web_014",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Protected route wrappers or guards present.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-015",
+      "catalogue_requirement": "Session persistence",
+      "handler": "handler_web_015",
+      "source": "genuine_handlers.handler_web_015",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Session or local token storage handling detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-016",
+      "catalogue_requirement": "Frontend/backend error handling",
+      "handler": "handler_web_016",
+      "source": "genuine_handlers.handler_web_016",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Exception and error handling blocks found in source.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-017",
+      "catalogue_requirement": "Duplicate form submissions",
+      "handler": "handler_web_017",
+      "source": "genuine_handlers.handler_web_017",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Button disablement or submitting state prevents duplicate clicks.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-018",
+      "catalogue_requirement": "Search and filtering",
+      "handler": "handler_web_018",
+      "source": "genuine_handlers.handler_web_018",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Search or filtering logic detected.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-019",
+      "catalogue_requirement": "Pagination correctness",
+      "handler": "handler_web_019",
+      "source": "genuine_handlers.handler_web_019",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "pass",
+      "detail": "Web pagination state controls verified.",
+      "status": "PARTIALLY_VERIFIED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    },
+    {
+      "id": "WEB-020",
+      "catalogue_requirement": "Browser console exceptions",
+      "handler": "handler_web_020",
+      "source": "genuine_handlers.handler_web_020",
+      "dispatch": "server.run_selected_catalogue_checks",
+      "state": "fail",
+      "detail": "Uncaught runtime exception pattern found in client code.",
+      "status": "FAILED",
+      "runtime_limitation": "Static source inspection; runtime execution is intentionally unavailable.",
+      "catalogue_category": "Additional Web Application Tests",
+      "expected_when_compliant": "pass",
+      "expected_when_violated": "fail or not_testable",
+      "tests": {
+        "positive": "test_behavioral_184.py",
+        "negative": "test_behavioral_184.py",
+        "integration": "audit_repository.py"
+      },
+      "evidence_sources": [
+        "actual repository files"
+      ],
+      "known_limitations": "Static source inspection; runtime execution is intentionally unavailable."
+    }
+  ]
+}

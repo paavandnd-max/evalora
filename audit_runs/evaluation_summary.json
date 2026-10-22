@@ -1,0 +1,98 @@
+{
+  "https://github.com/octocat/Spoon-Knife": {
+    "repository_url": "https://github.com/octocat/Spoon-Knife",
+    "canonical_url": "https://github.com/octocat/spoon-knife",
+    "default_branch": "main",
+    "files_ingested": 3,
+    "fetch_seconds": 1.56,
+    "eval_seconds": 0.05,
+    "expected_executable_count": 224,
+    "dispatched_count": 224,
+    "results_count": 224,
+    "unique_results_count": 224,
+    "missing_ids": [],
+    "duplicate_ids": [],
+    "state_counts": {
+      "pass": 129,
+      "fail": 95
+    },
+    "score": 60,
+    "passed_checks": 143,
+    "scored_denominator": 239,
+    "status": "Flagged",
+    "report_executed_count": 224,
+    "report_eligible_count": 224
+  },
+  "https://github.com/pallets/flask": {
+    "repository_url": "https://github.com/pallets/flask",
+    "canonical_url": "https://github.com/pallets/flask",
+    "default_branch": "main",
+    "files_ingested": 140,
+    "fetch_seconds": 1.79,
+    "eval_seconds": 7.13,
+    "expected_executable_count": 224,
+    "dispatched_count": 224,
+    "results_count": 224,
+    "unique_results_count": 224,
+    "missing_ids": [],
+    "duplicate_ids": [],
+    "state_counts": {
+      "pass": 189,
+      "fail": 35
+    },
+    "score": 84,
+    "passed_checks": 203,
+    "scored_denominator": 241,
+    "status": "Flagged",
+    "report_executed_count": 224,
+    "report_eligible_count": 224
+  },
+  "https://github.com/psf/requests": {
+    "repository_url": "https://github.com/psf/requests",
+    "canonical_url": "https://github.com/psf/requests",
+    "default_branch": "main",
+    "files_ingested": 76,
+    "fetch_seconds": 3.44,
+    "eval_seconds": 5.93,
+    "expected_executable_count": 224,
+    "dispatched_count": 224,
+    "results_count": 224,
+    "unique_results_count": 224,
+    "missing_ids": [],
+    "duplicate_ids": [],
+    "state_counts": {
+      "pass": 194,
+      "fail": 30
+    },
+    "score": 86,
+    "passed_checks": 207,
+    "scored_denominator": 240,
+    "status": "Flagged",
+    "report_executed_count": 224,
+    "report_eligible_count": 224
+  },
+  "https://github.com/expressjs/express": {
+    "repository_url": "https://github.com/expressjs/express",
+    "canonical_url": "https://github.com/expressjs/express",
+    "default_branch": "master",
+    "files_ingested": 176,
+    "fetch_seconds": 1.79,
+    "eval_seconds": 5.58,
+    "expected_executable_count": 224,
+    "dispatched_count": 224,
+    "results_count": 224,
+    "unique_results_count": 224,
+    "missing_ids": [],
+    "duplicate_ids": [],
+    "state_counts": {
+      "pass": 187,
+      "fail": 37
+    },
+    "score": 83,
+    "passed_checks": 200,
+    "scored_denominator": 240,
+    "status": "Flagged",
+    "report_executed_count": 224,
+    "report_eligible_count": 224
+  }
+}

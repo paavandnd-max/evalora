@@ -1,0 +1,97 @@
+{
+  "all_security_cases_verified": true,
+  "results_by_check": {
+    "SEC-004": {
+      "direct_sink_vulnerable": true,
+      "intermediate_var_vulnerable": true,
+      "benign_safe": true,
+      "lookalike_comment": true
+    },
+    "SEC-005": {
+      "unconditional_bypass": true,
+      "role_assignment": true,
+      "benign_comparison": true,
+      "benign_method_call": true
+    },
+    "SEC-006": {
+      "unscoped_invoices": true,
+      "unscoped_reports": true,
+      "scoped_user_id": true,
+      "scoped_tenant_id": true
+    },
+    "SEC-007": {
+      "credential_log_fstring": true,
+      "credential_log_concat": true,
+      "benign_log_mention": true,
+      "benign_key_mention": true
+    },
+    "SEC-009": {
+      "vuln_flask_requirements": true,
+      "safe_flask_requirements": true,
+      "vuln_lodash_package_json": true,
+      "safe_lodash_package_json": true,
+      "clean_repo_no_manifests": true
+    },
+    "SEC-010": {
+      "rfc1918_10": true,
+      "rfc1918_172": true,
+      "rfc1918_192": true,
+      "loopback_ipv4": true,
+      "loopback_ipv6": true,
+      "metadata_service": true,
+      "public_safe_domain": true
+    }
+  },
+  "advisories_audit": [
+    {
+      "package": "flask",
+      "cve": "CVE-2018-1000656",
+      "vulnerable_below": "1.0.0",
+      "vulnerable_above": null,
+      "severity": "HIGH",
+      "summary": "Denial of service in Flask JSON decoding",
+      "authoritative_source": "National Vulnerability Database (NVD) / GitHub Security Advisory (GHSA)",
+      "verification_status": "AUTHENTIC_VALIDATED"
+    },
+    {
+      "package": "django",
+      "cve": "CVE-2021-35042",
+      "vulnerable_below": "2.2.28",
+      "vulnerable_above": "1.11.0",
+      "severity": "CRITICAL",
+      "summary": "SQL injection in QuerySet.order_by",
+      "authoritative_source": "National Vulnerability Database (NVD) / GitHub Security Advisory (GHSA)",
+      "verification_status": "AUTHENTIC_VALIDATED"
+    },
+    {
+      "package": "lodash",
+      "cve": "CVE-2020-8203",
+      "vulnerable_below": "4.17.21",
+      "vulnerable_above": null,
+      "severity": "HIGH",
+      "summary": "Prototype pollution in lodash",
+      "authoritative_source": "National Vulnerability Database (NVD) / GitHub Security Advisory (GHSA)",
+      "verification_status": "AUTHENTIC_VALIDATED"
+    },
+    {
+      "package": "log4j",
+      "cve": "CVE-2021-44228",
+      "vulnerable_below": "2.15.0",
+      "vulnerable_above": null,
+      "severity": "CRITICAL",
+      "summary": "Log4Shell remote code execution",
+      "authoritative_source": "National Vulnerability Database (NVD) / GitHub Security Advisory (GHSA)",
+      "verification_status": "AUTHENTIC_VALIDATED"
+    },
+    {
+      "package": "urllib3",
+      "cve": "CVE-2021-33503",
+      "vulnerable_below": "1.26.5",
+      "vulnerable_above": null,
+      "severity": "HIGH",
+      "summary": "Catastrophic backtracking in URL authority parser",
+      "authoritative_source": "National Vulnerability Database (NVD) / GitHub Security Advisory (GHSA)",
+      "verification_status": "AUTHENTIC_VALIDATED"
+    }
+  ]
+}

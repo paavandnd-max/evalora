@@ -1,0 +1,16 @@
+data.json
+data.tmp
+__pycache__/
+*.py[cod]
+.evalora_reference/
+.evalora_test.sqlite3
+.evalora_rate_limits.sqlite3*
+.env
+*.log
+*.deb
+cookie.txt
+NUL
+server_*.py
+server.py.bak
+.freebuff/
+.opencode/

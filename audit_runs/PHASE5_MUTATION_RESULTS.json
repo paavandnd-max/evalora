@@ -1,0 +1,155 @@
+{
+  "original_file": "genuine_handlers.py",
+  "sha256_hash_verified": true,
+  "original_sha256": "a5c168374e0ff6741a2832c576ea326cb4f292679088cd69f3c1f1a3e126921c",
+  "total_ast_mutants_generated": 40,
+  "mutants_killed": 32,
+  "mutants_survived": 8,
+  "mutants_invalid_syntax": 0,
+  "real_ast_mutation_kill_rate_pct": 80.0,
+  "oracle_sensitivity_simulated_mutants": 672,
+  "oracle_sensitivity_kill_rate_pct": 100.0,
+  "methodology_distinction": "Phase 4 reported 672/672 killed based on test-oracle sensitivity (stubbing handler returns with always_pass, always_fail, invert). Phase 5 introduces genuine AST source-code mutation altering AST operators (Eq, NotEq, In, NotIn, And, Or) in an isolated scope. Result: 32/40 true AST mutants killed (80.0%) with zero production file modification.",
+  "records_sample": [
+    {
+      "handler_id": "DG-001",
+      "function": "handler_dg_001",
+      "mutation": "In -> NotIn",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-001",
+      "function": "handler_dg_001",
+      "mutation": "And -> Or",
+      "mutation_point": 2,
+      "status": "SURVIVED"
+    },
+    {
+      "handler_id": "DG-002",
+      "function": "handler_dg_002",
+      "mutation": "And -> Or",
+      "mutation_point": 2,
+      "status": "SURVIVED"
+    },
+    {
+      "handler_id": "DG-002",
+      "function": "handler_dg_002",
+      "mutation": "Or -> And",
+      "mutation_point": 3,
+      "status": "SURVIVED"
+    },
+    {
+      "handler_id": "DG-003",
+      "function": "handler_dg_003",
+      "mutation": "In -> NotIn",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-003",
+      "function": "handler_dg_003",
+      "mutation": "In -> NotIn",
+      "mutation_point": 2,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-003",
+      "function": "handler_dg_003",
+      "mutation": "Or -> And",
+      "mutation_point": 3,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-005",
+      "function": "handler_dg_005",
+      "mutation": "In -> NotIn",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-007",
+      "function": "handler_dg_007",
+      "mutation": "NotIn -> In",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-007",
+      "function": "handler_dg_007",
+      "mutation": "Or -> And",
+      "mutation_point": 2,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-007",
+      "function": "handler_dg_007",
+      "mutation": "And -> Or",
+      "mutation_point": 3,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-008",
+      "function": "handler_dg_008",
+      "mutation": "And -> Or",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-011",
+      "function": "handler_dg_011",
+      "mutation": "Eq -> NotEq",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-011",
+      "function": "handler_dg_011",
+      "mutation": "Or -> And",
+      "mutation_point": 2,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-012",
+      "function": "handler_dg_012",
+      "mutation": "Eq -> NotEq",
+      "mutation_point": 2,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-014",
+      "function": "handler_dg_014",
+      "mutation": "Or -> And",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-015",
+      "function": "handler_dg_015",
+      "mutation": "NotIn -> In",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-019",
+      "function": "handler_dg_019",
+      "mutation": "In -> NotIn",
+      "mutation_point": 1,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-020",
+      "function": "handler_dg_020",
+      "mutation": "Eq -> NotEq",
+      "mutation_point": 2,
+      "status": "KILLED"
+    },
+    {
+      "handler_id": "DG-020",
+      "function": "handler_dg_020",
+      "mutation": "Eq -> NotEq",
+      "mutation_point": 3,
+      "status": "SURVIVED"
+    }
+  ]
+}
