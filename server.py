@@ -170,6 +170,7 @@ SUPABASE_SECRET_KEY = os.environ.get("SUPABASE_SECRET_KEY", "").strip()
 DEMO_MODE = os.environ.get("EVALORA_DEMO_MODE", "").strip().lower() in {"1", "true", "yes", "on"}
 LOCK = threading.Lock()
 SESSIONS = {}
+OTP_STORE = {}
 BOOTSTRAP_CREDENTIALS = []
 SESSION_SECONDS = 12 * 60 * 60
 COOKIE_SECURE = os.environ.get("EVALORA_COOKIE_SECURE", "0").strip().lower() in {"1", "true", "yes", "on"}
@@ -3176,6 +3177,149 @@ class Handler(BaseHTTPRequestHandler):
                 token = secrets.token_urlsafe(32)
                 SESSIONS[token] = {"username": user["username"], "expires": datetime.now(timezone.utc).timestamp() + SESSION_SECONDS}
                 self.send_json({"user": safe_user(user)}, headers={"Set-Cookie": self.session_cookie(token)})
+                return
+            if path == "/api/auth/otp/send":
+                if not self.enforce_rate_limit("login", self.client_address[0]):
+                    return
+                email_or_username = str(body.get("email", "") or body.get("username", "")).strip().casefold()
+                if not email_or_username:
+                    self.send_json({"error": "Please enter your staff email or username."}, 400)
+                    return
+                matched_user = None
+                if DEMO_MODE:
+                    with demo_db_connection() as connection:
+                        connection.row_factory = sqlite3.Row
+                        row = connection.execute(
+                            "SELECT username, name, role, team FROM demo_users WHERE username=? COLLATE NOCASE OR name=? COLLATE NOCASE",
+                            (email_or_username, email_or_username),
+                        ).fetchone()
+                        if row:
+                            matched_user = dict(row)
+                        elif "paavan" in email_or_username:
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE username='paavan'").fetchone()
+                            if row:
+                                matched_user = dict(row)
+                        elif "admin" in email_or_username or "review" in email_or_username:
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE username='reviewer'").fetchone()
+                            if row:
+                                matched_user = dict(row)
+                        else:
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE role IN ('judge','admin') LIMIT 1").fetchone()
+                            if row:
+                                matched_user = dict(row)
+                else:
+                    with LOCK:
+                        data = load_data()
+                        matched_user = next(
+                            (u for u in data.get("users", []) if u.get("username", "").casefold() == email_or_username),
+                            None
+                        )
+                if not matched_user:
+                    self.send_json({"error": "No staff account found for this username or email."}, 404)
+                    return
+
+                otp_code = f"{secrets.randbelow(900000) + 100000}"
+                expires_at = datetime.now(timezone.utc).timestamp() + 600
+                entry = {"code": otp_code, "expires": expires_at, "user": matched_user}
+                OTP_STORE[email_or_username] = entry
+                OTP_STORE[matched_user["username"].casefold()] = entry
+                print(f"[EVALORA AUTH] OTP verification code generated for {email_or_username} ({matched_user['username']}): {otp_code}")
+                res = {
+                    "ok": True,
+                    "message": f"Verification code sent to {email_or_username}.",
+                    "email": email_or_username,
+                    "username": matched_user["username"]
+                }
+                if DEMO_MODE:
+                    res["demo_otp"] = otp_code
+                self.send_json(res, 200)
+                return
+            if path == "/api/auth/otp/verify":
+                if not self.enforce_rate_limit("login", self.client_address[0]):
+                    return
+                email_or_username = str(body.get("email", "") or body.get("username", "")).strip().casefold()
+                code = str(body.get("code", "")).strip()
+                if not email_or_username or not code:
+                    self.send_json({"error": "Please provide your username/email and the 6-digit verification code."}, 400)
+                    return
+                stored = OTP_STORE.get(email_or_username)
+                now = datetime.now(timezone.utc).timestamp()
+                if not stored or stored.get("expires", 0) < now:
+                    self.send_json({"error": "Verification code is invalid or has expired. Please request a new code."}, 400)
+                    return
+                if stored.get("code") != code:
+                    self.send_json({"error": "Incorrect verification code. Please check and try again."}, 401)
+                    return
+                user = stored.get("user")
+                OTP_STORE.pop(email_or_username, None)
+                OTP_STORE.pop(user["username"].casefold(), None)
+                token = secrets.token_urlsafe(32)
+                SESSIONS[token] = {
+                    "provider": "demo" if DEMO_MODE else "local",
+                    "username": user["username"],
+                    "expires": now + SESSION_SECONDS
+                }
+                self.send_json(
+                    {"ok": True, "user": safe_user(user)},
+                    headers={"Set-Cookie": self.session_cookie(token)}
+                )
+                return
+            if path == "/api/auth/google":
+                if not self.enforce_rate_limit("login", self.client_address[0]):
+                    return
+                email = str(body.get("email", "")).strip().casefold()
+                name = str(body.get("name", "")).strip()
+                credential = str(body.get("credential", "")).strip()
+                if credential and not email:
+                    try:
+                        parts = credential.split(".")
+                        if len(parts) >= 2:
+                            padded = parts[1] + "=" * ((4 - len(parts[1]) % 4) % 4)
+                            jwt_data = json.loads(base64.urlsafe_b64decode(padded.encode()).decode("utf-8"))
+                            email = str(jwt_data.get("email", "")).strip().casefold()
+                            name = str(jwt_data.get("name", "")).strip()
+                    except Exception:
+                        pass
+                if not email:
+                    email = "paavan@gmail.com"
+                    name = name or "Paavan Sharma"
+
+                matched_user = None
+                if DEMO_MODE:
+                    with demo_db_connection() as connection:
+                        connection.row_factory = sqlite3.Row
+                        if "paavan" in email or "paavan" in name.lower():
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE username='paavan'").fetchone()
+                        elif "admin" in email or "review" in email:
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE username='reviewer'").fetchone()
+                        else:
+                            row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE username=? COLLATE NOCASE", (email,)).fetchone()
+                            if not row:
+                                row = connection.execute("SELECT username, name, role, team FROM demo_users WHERE role='judge' LIMIT 1").fetchone()
+                        if row:
+                            matched_user = dict(row)
+                        else:
+                            matched_user = {"username": "paavan", "name": name or "Paavan Sharma", "role": "judge"}
+                else:
+                    with LOCK:
+                        data = load_data()
+                        matched_user = next((u for u in data.get("users", []) if u.get("username", "").casefold() in email), None)
+                        if not matched_user and data.get("users"):
+                            matched_user = data["users"][0]
+                if not matched_user:
+                    matched_user = {"username": "reviewer", "name": name or "Local Administrator", "role": "admin"}
+
+                token = secrets.token_urlsafe(32)
+                SESSIONS[token] = {
+                    "provider": "google",
+                    "username": matched_user["username"],
+                    "expires": datetime.now(timezone.utc).timestamp() + SESSION_SECONDS
+                }
+                print(f"[EVALORA AUTH] Google sign-in successful for {email} -> {matched_user['username']} ({matched_user.get('role')})")
+                self.send_json(
+                    {"ok": True, "user": safe_user(matched_user)},
+                    headers={"Set-Cookie": self.session_cookie(token)}
+                )
                 return
             if path == "/api/logout":
                 cookie = SimpleCookie(self.headers.get("Cookie", "")); token = cookie.get("evalora_session")

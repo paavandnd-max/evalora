@@ -3003,14 +3003,47 @@
             <textarea name="event_description" maxlength="2000" rows="2" placeholder="Brief event description" class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white"></textarea>
           </div>
           <div>
+            <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Assigned Judges / Judge Names (comma-separated)</label>
+            <input name="judges" placeholder="e.g. paavan, reviewer, mira.patel" class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white" />
+            <p class="text-[10px] text-on-surface-variant/70 mt-1 font-mono">Assigned judges will have authorization to evaluate and review submissions for this event.</p>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-high/40 border border-outline-variant/30 space-y-2">
+            <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
+              <input name="create_missing_judges" id="createMissingJudgesCheck" type="checkbox" class="accent-primary rounded" />
+              <span>Auto-create missing judge accounts if not found</span>
+            </label>
+            <div id="judgePasswordWrapper" hidden>
+              <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Temporary Password for New Judges (min 12 chars)</label>
+              <input name="judge_account_password" type="password" minlength="12" placeholder="Temporary password (12+ characters)" class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Organizer</label>
+              <input name="organizer" maxlength="120" placeholder="e.g. Hackathon Team" class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white" />
+            </div>
+            <div>
+              <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Submission Deadline</label>
+              <input name="deadline" type="datetime-local" class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white font-mono" />
+            </div>
+          </div>
+          <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface-variant">
+            <input name="allow_resubmissions" type="checkbox" checked class="accent-primary rounded" />
+            <span>Allow teams to resubmit (default: enabled)</span>
+          </label>
+          <div>
             <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Problem Statement Text</label>
             <textarea name="statement" required rows="4" maxlength="40000" placeholder="Enter problem requirements and evaluation criteria..." class="w-full bg-surface-container border border-outline-variant rounded px-3 py-2 text-xs text-white font-mono"></textarea>
           </div>
           <div>
             <label class="block text-[10px] font-mono uppercase text-on-surface-variant mb-1">Statement File (Optional: .pdf, .docx, .txt)</label>
-            <input name="statement_file" type="file" accept=".pdf,.docx,.txt" class="w-full text-xs text-on-surface-variant" />
+            <input name="statement_file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" class="w-full text-xs text-on-surface-variant" />
           </div>`;
         submit.textContent = 'Create Event';
+        document.getElementById('createMissingJudgesCheck')?.addEventListener('change', e => {
+          const pw = document.getElementById('judgePasswordWrapper');
+          if (pw) pw.hidden = !e.target.checked;
+        });
       }
       overlay.classList.add('show');
     }
@@ -3028,12 +3061,18 @@
       try {
         const fd = new FormData(event.currentTarget);
         const file = fd.get('statement_file');
+        const createMissing = document.querySelector('#entryForm [name="create_missing_judges"]')?.checked === true;
+        const judgePassword = document.querySelector('#entryForm [name="judge_account_password"]')?.value || '';
         const payload = {
           name: fd.get('event_name'),
-          description: fd.get('event_description'),
+          description: fd.get('event_description') || '',
           statement: fd.get('statement'),
-          organizer: 'Administrator',
-          allow_resubmissions: true
+          judges: fd.get('judges') || '',
+          create_missing_judges: createMissing,
+          judge_account_password: judgePassword,
+          organizer: fd.get('organizer') || 'Administrator',
+          deadline: fd.get('deadline') || '',
+          allow_resubmissions: fd.get('allow_resubmissions') === 'on' || fd.get('allow_resubmissions') === true
         };
         if (file && file.size) {
           if (file.size > 5_000_000) throw new Error('Statement file must be under 5 MB');
