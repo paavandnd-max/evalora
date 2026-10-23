@@ -110,6 +110,11 @@ CREATE TABLE IF NOT EXISTS submission_evaluations (
   config_version INTEGER NOT NULL,
   evaluation_status TEXT NOT NULL,
   report_json TEXT NOT NULL,
+  telemetry_json TEXT NOT NULL DEFAULT '{}',
+  vectors_json TEXT NOT NULL DEFAULT '[]',
+  logs_text TEXT NOT NULL DEFAULT '',
+  artifact_checksum TEXT NOT NULL DEFAULT '',
+  source_revision TEXT NOT NULL DEFAULT '',
   created_at TEXT NOT NULL
 );
 
@@ -146,7 +151,11 @@ CREATE TABLE IF NOT EXISTS submissions (
   event_team_id TEXT REFERENCES event_teams(id),
   config_version INTEGER NOT NULL DEFAULT 0,
   evaluation_status TEXT NOT NULL DEFAULT 'completed',
-  idempotency_key TEXT NOT NULL DEFAULT ''
+  idempotency_key TEXT NOT NULL DEFAULT '',
+  artifact_checksum TEXT NOT NULL DEFAULT '',
+  source_revision TEXT NOT NULL DEFAULT '',
+  artifact_status TEXT NOT NULL DEFAULT 'validated',
+  latest_evaluation_id TEXT NOT NULL DEFAULT ''
 );
 
 CREATE INDEX IF NOT EXISTS test_submission_event_team_repo_idx
