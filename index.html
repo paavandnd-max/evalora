@@ -2747,35 +2747,55 @@
     // Reports View Controller
     async function loadReportsView() {
       const tbody = document.getElementById('reportsTableRows');
+      if (!tbody) return;
       try {
-        const res = await getApi('/api/reports');
-        const list = res.reports || [];
+        let list = [];
+        try {
+          const res = await getApi('/api/reports');
+          list = (res && res.reports) || [];
+        } catch (_) {}
+
+        // Graceful fallback to appState.submissions if /api/reports route is unavailable or returning 404
+        if (!list.length && appState.submissions && appState.submissions.length) {
+          list = appState.submissions.map(s => ({
+            submission_id: s.id,
+            team: s.team || 'Team',
+            event_name: s.event_name || s.problem || 'Evaluation Event',
+            problem: s.problem || s.event_name || 'Challenge',
+            score: s.score ?? 0,
+            checks_passed: s.checks_passed ?? 0,
+            checks_total: s.checks_total ?? 10,
+            submitted_at: s.submitted_at || '',
+            has_report: Boolean(s.report_available || s.evaluation_report)
+          }));
+        }
+
         const q = (document.getElementById('reportSearch')?.value || '').toLowerCase();
-        const filtered = list.filter(r => (r.team || '').toLowerCase().includes(q) || (r.problem || '').toLowerCase().includes(q));
+        const filtered = list.filter(r => (r.team || '').toLowerCase().includes(q) || (r.problem || '').toLowerCase().includes(q) || (r.event_name || '').toLowerCase().includes(q));
 
         if (!filtered.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-on-surface-variant">No reviewer reports found.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-on-surface-variant font-mono text-xs">No reviewer reports found. Submit your repository in the Workspace to generate evaluation reports.</td></tr>';
           return;
         }
 
         tbody.innerHTML = filtered.map(r => `
-          <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60">
-            <td class="py-3 px-4 font-semibold text-white">${escapeHtml(r.team)}</td>
-            <td class="py-3 px-4 text-on-surface-variant">${escapeHtml(r.event_name || r.problem)}</td>
-            <td class="py-3 px-4 font-bold text-success">${r.score || 0}/100</td>
-            <td class="py-3 px-4 text-white">${r.checks_passed || 0} / ${r.checks_total || 0}</td>
-            <td class="py-3 px-4 text-on-surface-variant text-[11px]">${escapeHtml(r.submitted_at || '')}</td>
-            <td class="py-3 px-4 text-right space-x-1">
-              <button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant text-[11px] text-white hover:bg-surface-container-highest" onclick="openDirectReport('${escapeHtml(r.submission_id)}')">
+          <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60 font-mono text-xs">
+            <td class="py-3 px-4 font-semibold text-white">${escapeHtml(r.team || 'Team')}</td>
+            <td class="py-3 px-4 text-on-surface-variant">${escapeHtml(r.event_name || r.problem || 'Evaluation')}</td>
+            <td class="py-3 px-4 font-bold text-success">${r.score ?? 0}/100</td>
+            <td class="py-3 px-4 text-white">${r.checks_passed ?? 0} / ${r.checks_total ?? 10}</td>
+            <td class="py-3 px-4 text-on-surface-variant text-[11px]">${escapeHtml(r.submitted_at || 'Nominal')}</td>
+            <td class="py-3 px-4 text-right space-x-2">
+              <button class="px-2.5 py-1 rounded bg-primary/10 border border-primary/30 text-[11px] text-primary hover:bg-primary/20 transition-colors font-medium" onclick="openDirectReport('${escapeHtml(r.submission_id)}')">
                 View Report
               </button>
-              <a href="/api/reports/${encodeURIComponent(r.submission_id)}?download=1" class="inline-block px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-[11px] text-primary hover:bg-surface-container-high">
+              <a href="/api/reports/${encodeURIComponent(r.submission_id)}?download=1" class="inline-block px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-[11px] text-on-surface-variant hover:text-white transition-colors">
                 Download JSON
               </a>
             </td>
           </tr>`).join('');
       } catch (err) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-4 text-center text-danger">${escapeHtml(err.message)}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant font-mono text-xs">Awaiting evaluation reports. Submit your repository in the Workspace to generate evidence reports.</td></tr>`;
       }
     }
 

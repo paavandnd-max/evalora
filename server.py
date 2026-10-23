@@ -2859,28 +2859,47 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json({"evaluations": rows})
                 return
         if path == "/api/reports":
-            user = self.require_roles("admin", "judge", "mentor")
+            user = self.require_roles("admin", "judge", "mentor", "team")
             if not user:
                 return
             if DEMO_MODE:
                 with demo_db_connection() as connection:
                     connection.row_factory = sqlite3.Row
-                    rows = [dict(r) for r in connection.execute("""
-                        SELECT s.id AS submission_id, s.event_id, s.score, s.status, s.evaluation_status,
-                               s.submitted_at, s.repository_url, s.checks_passed, s.checks_total,
-                               COALESCE(et.team_name, t.name) AS team, p.title AS problem, e.name AS event_name,
-                               (s.evaluation_report_json <> '{}' AND s.evaluation_report_json <> '') AS has_report
-                        FROM submissions s
-                        JOIN teams t ON t.id = s.team_id
-                        JOIN problems p ON p.id = s.problem_id
-                        LEFT JOIN events e ON e.id = s.event_id
-                        LEFT JOIN event_teams et ON et.id = s.event_team_id
-                        ORDER BY s.submitted_at DESC
-                    """).fetchall()]
+                    if user["role"] == "team":
+                        rows = [dict(r) for r in connection.execute("""
+                            SELECT s.id AS submission_id, s.event_id, s.score, s.status, s.evaluation_status,
+                                   s.submitted_at, s.repository_url, s.checks_passed, s.checks_total,
+                                   COALESCE(et.team_name, t.name) AS team, p.title AS problem, e.name AS event_name,
+                                   (s.evaluation_report_json <> '{}' AND s.evaluation_report_json <> '') AS has_report
+                            FROM submissions s
+                            JOIN teams t ON t.id = s.team_id
+                            JOIN problems p ON p.id = s.problem_id
+                            LEFT JOIN events e ON e.id = s.event_id
+                            LEFT JOIN event_teams et ON et.id = s.event_team_id
+                            WHERE LOWER(COALESCE(et.team_name, t.name)) = LOWER(?)
+                            ORDER BY s.submitted_at DESC
+                        """, (user.get("team") or user.get("username", ""),)).fetchall()]
+                    else:
+                        rows = [dict(r) for r in connection.execute("""
+                            SELECT s.id AS submission_id, s.event_id, s.score, s.status, s.evaluation_status,
+                                   s.submitted_at, s.repository_url, s.checks_passed, s.checks_total,
+                                   COALESCE(et.team_name, t.name) AS team, p.title AS problem, e.name AS event_name,
+                                   (s.evaluation_report_json <> '{}' AND s.evaluation_report_json <> '') AS has_report
+                            FROM submissions s
+                            JOIN teams t ON t.id = s.team_id
+                            JOIN problems p ON p.id = s.problem_id
+                            LEFT JOIN events e ON e.id = s.event_id
+                            LEFT JOIN event_teams et ON et.id = s.event_team_id
+                            ORDER BY s.submitted_at DESC
+                        """).fetchall()]
                 self.send_json({"reports": rows})
                 return
             else:
                 data = load_data()
+                all_subs = data.get("submissions", [])
+                if user["role"] == "team":
+                    team_lower = (user.get("team") or user.get("username", "")).lower()
+                    all_subs = [s for s in all_subs if (s.get("team") or "").lower() == team_lower]
                 rows = [
                     {
                         "submission_id": s.get("id"),
@@ -2897,7 +2916,7 @@ class Handler(BaseHTTPRequestHandler):
                         "event_name": s.get("event_name", s.get("problem", "Hackathon Event")),
                         "has_report": bool(s.get("evaluation_report"))
                     }
-                    for s in data.get("submissions", [])
+                    for s in all_subs
                 ]
                 self.send_json({"reports": rows})
                 return
