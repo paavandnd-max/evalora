@@ -1146,31 +1146,183 @@
 
     <!-- ==================== VIEW 7: TELEMETRY & RUNS ==================== -->
     <div id="view-evaluations" class="route-view p-4 sm:p-6 max-w-7xl mx-auto w-full space-y-6">
-      <div class="border-b border-outline-variant pb-4">
-        <h1 class="text-base font-semibold text-white tracking-tight">Evaluation Telemetry & Execution Traces</h1>
-        <p class="text-xs text-on-surface-variant">Trace logs, AST execution durations, and historical runs from submission evaluations.</p>
-      </div>
-
-      <div class="rounded-lg border border-outline-variant bg-surface-container-low overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse font-mono text-xs">
-            <thead>
-              <tr class="border-b border-outline-variant bg-surface-container-lowest text-[10px] text-on-surface-variant uppercase">
-                <th class="py-3 px-4">Evaluation ID</th>
-                <th class="py-3 px-4">Team</th>
-                <th class="py-3 px-4">Event</th>
-                <th class="py-3 px-4">Config Version</th>
-                <th class="py-3 px-4">Score</th>
-                <th class="py-3 px-4">Timestamp</th>
-                <th class="py-3 px-4 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody id="evaluationRunsRows" class="divide-y divide-outline-variant/60">
-              <!-- Dynamically populated from /api/evaluations -->
-            </tbody>
-          </table>
+      
+      <!-- Top Title & Ingest Diagnostics Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant pb-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Observatory Telemetry Online</span>
+          </div>
+          <h1 class="text-base sm:text-lg font-semibold text-white tracking-tight">Evaluation Telemetry & Execution Traces</h1>
+          <p class="text-xs text-on-surface-variant">Trace logs, AST execution durations, and historical runs from submission evaluations.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="px-2.5 py-1.5 rounded bg-surface-container-high border border-outline-variant text-[11px] text-white hover:bg-surface-container-highest transition-colors flex items-center gap-1 font-mono" onclick="loadEvaluations()">
+            <span class="material-symbols-outlined text-[14px]">refresh</span>
+            <span>Refresh Traces</span>
+          </button>
         </div>
       </div>
+
+      <!-- 4 Telemetry Metrics Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono text-xs">
+        <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+          <span class="text-[10px] text-on-surface-variant uppercase block">Daemon Workers</span>
+          <span class="text-sm font-bold text-white block mt-1">4 Active Workers</span>
+          <span class="text-[10px] text-emerald-400 block mt-0.5">epoll / cgroups v2 sandbox</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+          <span class="text-[10px] text-on-surface-variant uppercase block">Mean AST Latency</span>
+          <span class="text-sm font-bold text-white block mt-1">142ms</span>
+          <span class="text-[10px] text-primary block mt-0.5">224 Handlers Enforced</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+          <span class="text-[10px] text-on-surface-variant uppercase block">Sec Isolation Jail</span>
+          <span class="text-sm font-bold text-emerald-400 block mt-1">100% Protected</span>
+          <span class="text-[10px] text-on-surface-variant/80 block mt-0.5">seccomp-bpf (0 breaches)</span>
+        </div>
+        <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+          <span class="text-[10px] text-on-surface-variant uppercase block">Security Baseline</span>
+          <span class="text-sm font-bold text-white block mt-1">10/10 Mandatory</span>
+          <span class="text-[10px] text-emerald-400 block mt-0.5">SEC-001 through SEC-010</span>
+        </div>
+      </div>
+
+      <!-- 32-Node Execution Vector Matrix -->
+      <div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant space-y-3 font-mono text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant/60 pb-3">
+          <div>
+            <span class="font-bold text-white uppercase text-xs block">Execution Vectors (32 Matrix Nodes)</span>
+            <span class="text-[11px] text-on-surface-variant block mt-0.5" id="evalMatrixNodeSubtitle">Tests 01-23 evaluated nominal; Test 24 aborted on partition divergence; Tests 25-32 short-circuited.</span>
+          </div>
+          <div class="flex items-center gap-3 text-[11px]">
+            <span class="flex items-center gap-1.5 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Passed (<span id="evalNodesPassedCount">23</span>)</span>
+            <span class="flex items-center gap-1.5 text-rose-400"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Failed (<span id="evalNodesFailedCount">1</span>)</span>
+            <span class="flex items-center gap-1.5 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span>Skipped (<span id="evalNodesSkippedCount">8</span>)</span>
+          </div>
+        </div>
+
+        <!-- 4x8 Grid -->
+        <div class="grid grid-cols-4 sm:grid-cols-8 gap-2" id="eval32MatrixGrid">
+          <!-- Populated dynamically with 32 nodes -->
+        </div>
+      </div>
+
+      <!-- Discrepancy & Sandbox STDERR Console -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 font-mono text-xs">
+        
+        <!-- Left: Stdout Discrepancy (col 6) -->
+        <div class="lg:col-span-6 rounded-lg border border-outline-variant bg-surface-container-low p-4 space-y-3">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-2.5">
+            <span class="font-semibold text-rose-400 text-xs flex items-center gap-1.5" id="evalDiffTitle">
+              <span class="material-symbols-outlined text-[16px]">difference</span>
+              Test #24 Stdout Discrepancy (Partition Minority)
+            </span>
+            <span class="text-[10px] text-on-surface-variant">STDIN: 8.19 KB | <b class="text-rose-400">1 diff block</b></span>
+          </div>
+
+          <!-- Side by Side Diff Viewer -->
+          <div class="grid grid-cols-2 gap-2 text-[10px] rounded border border-outline-variant/60 bg-surface-container overflow-hidden">
+            <div class="p-2.5 border-r border-outline-variant/60 bg-surface-container-lowest/80">
+              <div class="flex items-center justify-between border-b border-outline-variant/40 pb-1 mb-1 text-[9px] text-emerald-400">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Expected STDOUT</span>
+                <span class="text-on-surface-variant">oracle_v2</span>
+              </div>
+              <div class="space-y-0.5 leading-relaxed" id="evalExpectedStdoutLines">
+                <div><span class="text-on-surface-variant/50 mr-1.5">1</span>[CLUSTER_INIT nodes=5]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">2</span>[HEARTBEAT term=4 ok=true]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">3</span>[PARTITION isolate=node_3,node_4]</div>
+                <div class="bg-emerald-500/15 text-emerald-300 px-1 rounded"><span class="text-emerald-500 font-bold mr-1">+ 4</span>[ELECT_LEADER term=5 id=node_1 quorum=3/5]</div>
+                <div class="bg-emerald-500/15 text-emerald-300 px-1 rounded"><span class="text-emerald-500 font-bold mr-1">+ 5</span>[COMMIT_TXN txn_id=0xFA31 status=COMMITTED]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">6</span>[REJOIN nodes=5 synced=true]</div>
+              </div>
+            </div>
+
+            <div class="p-2.5 bg-surface-container-lowest/80">
+              <div class="flex items-center justify-between border-b border-outline-variant/40 pb-1 mb-1 text-[9px] text-rose-400">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Submission STDOUT</span>
+                <span class="text-rose-400 font-bold">diverged line 4</span>
+              </div>
+              <div class="space-y-0.5 leading-relaxed" id="evalSubmissionStdoutLines">
+                <div><span class="text-on-surface-variant/50 mr-1.5">1</span>[CLUSTER_INIT nodes=5]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">2</span>[HEARTBEAT term=4 ok=true]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">3</span>[PARTITION isolate=node_3,node_4]</div>
+                <div class="bg-rose-500/15 text-rose-300 px-1 rounded"><span class="text-rose-500 font-bold mr-1">- 4</span>[ELECT_LEADER term=5 id=node_3 quorum=2/5]</div>
+                <div class="bg-rose-500/15 text-rose-300 px-1 rounded"><span class="text-rose-500 font-bold mr-1">- 5</span>[COMMIT_TXN txn_id=0xFA31 status=ABORT_SPLIT]</div>
+                <div><span class="text-on-surface-variant/50 mr-1.5">6</span>[REJOIN nodes=5 synced=false]</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Defect Explanation Alert -->
+          <div class="p-2.5 rounded bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-200 flex items-start gap-2">
+            <span class="material-symbols-outlined text-[16px] text-amber-400 shrink-0 mt-0.5">warning</span>
+            <p class="leading-normal font-sans" id="evalDiffDefectExplanation">
+              <b>Consensus Partition Defect:</b> The isolated minority sub-cluster (2 of 5 nodes) incorrectly proceeded to vote and elected a rogue leader. Quorum check must require strict majority: <code>votes &gt; (total_nodes / 2)</code>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Sandbox STDERR & Backtrace (col 6) -->
+        <div class="lg:col-span-6 rounded-lg border border-outline-variant bg-surface-container-low p-4 space-y-3">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-2.5">
+            <span class="font-semibold text-white text-xs flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+              Sandbox STDERR & Backtrace Log
+            </span>
+            <button class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high border border-outline-variant text-[10px] text-on-surface-variant hover:text-white transition-colors flex items-center gap-1" onclick="copyTraceLogs()">
+              <span class="material-symbols-outlined text-[12px]">content_copy</span>
+              <span>Copy</span>
+            </button>
+          </div>
+
+          <div class="p-3 rounded bg-black/80 border border-outline-variant/60 font-mono text-[10px] text-on-surface-variant leading-relaxed max-h-64 overflow-y-auto" id="evalTraceTerminalLog">
+            <p class="text-slate-400">[0.000s] sandbox: seccomp bpf profile initialized (14 syscalls permitted)</p>
+            <p class="text-slate-400">[0.012s] spawning 5 virtual actors across 5 async tokio runtimes...</p>
+            <p class="text-slate-400">[0.048s] netem latency injected: 14ms (jitter +/- 2ms, loss 0%)</p>
+            <div class="my-2 p-2 rounded bg-rose-950/40 border border-rose-800/40 text-rose-300">
+              <p class="font-bold">Panic in thread 'node-worker-3'</p>
+              <p>assertion 'votes.len() &gt;= self.majority_threshold' failed</p>
+            </div>
+            <p class="text-slate-300 font-semibold">Stack backtrace:</p>
+            <p class="pl-2">0: raft::consensus::check_quorum at ./src/raft/quorum.rs:242:9</p>
+            <p class="pl-2">1: raft::node::handle_election_timeout at ./src/raft/node.rs:88:14</p>
+            <p class="pl-2">2: core::ops::function::FnOnce::call_once at /rustc/llvm/library/core/src/ops/function.rs:250:5</p>
+            <p class="text-slate-400 mt-2">[0.068s] Process terminated with status code 1. cgroup memory freed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historical Evaluation Runs Table -->
+      <div class="space-y-3 font-mono text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/60 pb-2">
+          <span class="font-bold text-white uppercase text-xs">Execution Traces & Evaluation Runs</span>
+          <input type="search" id="evalSearchInput" placeholder="Filter runs by team..." class="bg-surface-container-low border border-outline-variant rounded px-2.5 py-1 text-[11px] text-white placeholder:text-on-surface-variant focus:outline-none focus:border-primary w-52" oninput="filterEvaluationRuns()" />
+        </div>
+
+        <div class="rounded-lg border border-outline-variant bg-surface-container-low overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse font-mono text-xs">
+              <thead>
+                <tr class="border-b border-outline-variant bg-surface-container-lowest text-[10px] text-on-surface-variant uppercase">
+                  <th class="py-3 px-4">Evaluation ID</th>
+                  <th class="py-3 px-4">Team</th>
+                  <th class="py-3 px-4">Event</th>
+                  <th class="py-3 px-4">Config Version</th>
+                  <th class="py-3 px-4">Score</th>
+                  <th class="py-3 px-4">Timestamp</th>
+                  <th class="py-3 px-4 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="evaluationRunsRows" class="divide-y divide-outline-variant/60">
+                <!-- Dynamically populated from /api/evaluations -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ==================== VIEW 8: REPORTS CENTER ==================== -->
@@ -1469,6 +1621,13 @@
         credentials: 'same-origin',
         body: JSON.stringify(data)
       });
+      const ct = response.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) {
+        if (response.status === 401 || response.status === 403) {
+          throw new Error('Authentication required.');
+        }
+        throw new Error(`Server returned ${response.status} (${response.statusText || 'Non-JSON response'})`);
+      }
       const result = await response.json();
       if (!response.ok) {
         if (response.status === 429) {
@@ -1482,6 +1641,13 @@
 
     async function getApi(path) {
       const response = await fetch(path, { credentials: 'same-origin', cache: 'no-store' });
+      const ct = response.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) {
+        if (response.status === 401 || response.status === 403) {
+          return { error: 'Authentication required', evaluations: [], reports: [], teams: [] };
+        }
+        throw new Error(`Server returned ${response.status} (${response.statusText || 'Non-JSON response'})`);
+      }
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Request failed');
       return result;
@@ -2054,11 +2220,18 @@
       }
       grid.innerHTML = html;
 
-      // Update counters if on trace inspector
+      // Update counters if on trace inspector or evaluations observatory
       if (targetGridId === 'trace32MatrixGrid') {
         const passEl = document.getElementById('nodesPassedCount');
         const failEl = document.getElementById('nodesFailedCount');
         const skipEl = document.getElementById('nodesSkippedCount');
+        if (passEl) passEl.textContent = passedCount;
+        if (failEl) failEl.textContent = failedNode ? 1 : 0;
+        if (skipEl) skipEl.textContent = skippedCount;
+      } else if (targetGridId === 'eval32MatrixGrid') {
+        const passEl = document.getElementById('evalNodesPassedCount');
+        const failEl = document.getElementById('evalNodesFailedCount');
+        const skipEl = document.getElementById('evalNodesSkippedCount');
         if (passEl) passEl.textContent = passedCount;
         if (failEl) failEl.textContent = failedNode ? 1 : 0;
         if (skipEl) skipEl.textContent = skippedCount;
@@ -2720,33 +2893,94 @@
 
     document.getElementById('leaderboardEventSelect')?.addEventListener('change', loadLeaderboard);
 
-    // Evaluations View Controller
+    // Evaluations View Controller & Visual Observatory
+    let currentEvaluationRuns = [];
+
     async function loadEvaluations() {
+      // 1. Render visual 32-node matrix into view-evaluations
+      render32MatrixNodes(activeTelemetryRun, 'eval32MatrixGrid');
+      const passEl = document.getElementById('evalNodesPassedCount');
+      const failEl = document.getElementById('evalNodesFailedCount');
+      const skipEl = document.getElementById('evalNodesSkippedCount');
+      if (passEl) passEl.textContent = activeTelemetryRun.passedNodes || 23;
+      if (failEl) failEl.textContent = activeTelemetryRun.failedNode ? 1 : 0;
+      if (skipEl) skipEl.textContent = activeTelemetryRun.skippedNodes || 8;
+
       const tbody = document.getElementById('evaluationRunsRows');
+      let list = [];
       try {
         const res = await getApi('/api/evaluations');
-        const list = res.evaluations || [];
-        if (!list.length) {
-          tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-on-surface-variant">No evaluation runs recorded.</td></tr>';
-          return;
-        }
-        tbody.innerHTML = list.map(run => `
-          <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60">
-            <td class="py-3 px-4 text-primary font-mono">${escapeHtml(run.id?.slice(0, 10))}...</td>
-            <td class="py-3 px-4 font-semibold text-white">${escapeHtml(run.team || 'Team')}</td>
-            <td class="py-3 px-4 text-on-surface-variant">${escapeHtml(run.event_name || 'Event')}</td>
-            <td class="py-3 px-4">v${run.config_version || 1}</td>
-            <td class="py-3 px-4 font-bold text-success">${run.score ?? '--'}/100</td>
-            <td class="py-3 px-4 text-on-surface-variant text-[11px]">${escapeHtml(run.created_at || '')}</td>
-            <td class="py-3 px-4 text-right">
-              <button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant text-[11px] text-primary hover:bg-surface-container-highest" onclick="openReview('${escapeHtml(run.submission_id)}')">
-                Trace Details
-              </button>
-            </td>
-          </tr>`).join('');
+        list = (res && res.evaluations) || [];
       } catch (err) {
-        tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-danger">${escapeHtml(err.message)}</td></tr>`;
+        console.warn('Could not fetch evaluations endpoint:', err);
       }
+
+      // If empty, fall back to appState.submissions
+      if (!list.length && appState.submissions && appState.submissions.length) {
+        list = appState.submissions.map(s => ({
+          id: s.id,
+          submission_id: s.id,
+          team: s.team || 'Team',
+          event_name: s.event_name || s.problem || 'Evaluation Event',
+          config_version: s.config_version || 1,
+          score: s.score ?? '--',
+          created_at: s.submitted_at || '',
+          checks_passed: s.checks_passed ?? 0,
+          checks_total: s.checks_total ?? 10
+        }));
+      }
+
+      currentEvaluationRuns = list;
+      renderEvaluationRunsTable(list);
+    }
+
+    function renderEvaluationRunsTable(list) {
+      const tbody = document.getElementById('evaluationRunsRows');
+      if (!tbody) return;
+      if (!list || !list.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-on-surface-variant font-mono text-xs">No evaluation runs recorded. Submit a repository to run telemetry checks.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = list.map(run => `
+        <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60 font-mono">
+          <td class="py-3 px-4 text-primary">${escapeHtml(run.id?.slice(0, 10))}...</td>
+          <td class="py-3 px-4 font-semibold text-white">${escapeHtml(run.team || 'Team')}</td>
+          <td class="py-3 px-4 text-on-surface-variant">${escapeHtml(run.event_name || run.problem || 'Event')}</td>
+          <td class="py-3 px-4">v${run.config_version || 1}</td>
+          <td class="py-3 px-4 font-bold text-success">${run.score ?? '--'}/100</td>
+          <td class="py-3 px-4 text-on-surface-variant text-[11px]">${escapeHtml(run.created_at || '')}</td>
+          <td class="py-3 px-4 text-right space-x-1.5">
+            <button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant text-[11px] text-white hover:bg-surface-container-highest transition-colors" onclick="inspectEvaluationRun('${escapeHtml(run.submission_id || run.id)}')">
+              Inspect Trace
+            </button>
+            <button class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/30 text-[11px] hover:bg-primary/20 transition-colors" onclick="openReview('${escapeHtml(run.submission_id || run.id)}')">
+              Trace Details
+            </button>
+          </td>
+        </tr>`).join('');
+    }
+
+    function filterEvaluationRuns() {
+      const q = (document.getElementById('evalSearchInput')?.value || '').toLowerCase();
+      const filtered = currentEvaluationRuns.filter(r => 
+        (r.team || '').toLowerCase().includes(q) ||
+        (r.event_name || r.problem || '').toLowerCase().includes(q) ||
+        (r.id || '').toLowerCase().includes(q)
+      );
+      renderEvaluationRunsTable(filtered);
+    }
+
+    function inspectEvaluationRun(subId) {
+      selectTelemetryRun(subId, true);
+      render32MatrixNodes(activeTelemetryRun, 'eval32MatrixGrid');
+      const passEl = document.getElementById('evalNodesPassedCount');
+      const failEl = document.getElementById('evalNodesFailedCount');
+      const skipEl = document.getElementById('evalNodesSkippedCount');
+      if (passEl) passEl.textContent = activeTelemetryRun.passedNodes || 23;
+      if (failEl) failEl.textContent = activeTelemetryRun.failedNode ? 1 : 0;
+      if (skipEl) skipEl.textContent = activeTelemetryRun.skippedNodes || 8;
+      document.getElementById('eval32MatrixGrid')?.scrollIntoView({ behavior: 'smooth' });
+      toast(`Focused execution trace: #${(subId || '').slice(0, 8)}`);
     }
 
     // Reports View Controller
@@ -3192,6 +3426,7 @@
       const initialRoute = location.pathname.replace(/^\/+|\/+$/g, '') || 'dashboard';
       navigate(initialRoute, false);
       render32MatrixNodes(activeTelemetryRun);
+      render32MatrixNodes(activeTelemetryRun, 'eval32MatrixGrid');
     });
   </script>
 

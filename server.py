@@ -2836,7 +2836,27 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json({"evaluations": rows})
                 return
             else:
-                self.send_json({"evaluations": []})
+                data = load_data()
+                rows = []
+                for s in data.get("submissions", []):
+                    if submission_id and s.get("id") != submission_id:
+                        continue
+                    rows.append({
+                        "id": s.get("id"),
+                        "submission_id": s.get("id"),
+                        "event_id": s.get("event_id"),
+                        "config_version": s.get("config_version", 1),
+                        "evaluation_status": s.get("evaluation_status", "completed"),
+                        "created_at": s.get("submitted_at"),
+                        "score": s.get("score"),
+                        "checks_passed": s.get("checks_passed"),
+                        "checks_total": s.get("checks_total"),
+                        "repository_url": s.get("repository_url"),
+                        "team": s.get("team"),
+                        "problem": s.get("problem"),
+                        "event_name": s.get("event_name", s.get("problem", "Hackathon Event"))
+                    })
+                self.send_json({"evaluations": rows})
                 return
         if path == "/api/reports":
             user = self.require_roles("admin", "judge", "mentor")
@@ -2861,7 +2881,25 @@ class Handler(BaseHTTPRequestHandler):
                 return
             else:
                 data = load_data()
-                self.send_json({"reports": []})
+                rows = [
+                    {
+                        "submission_id": s.get("id"),
+                        "event_id": s.get("event_id"),
+                        "score": s.get("score"),
+                        "status": s.get("status"),
+                        "evaluation_status": s.get("evaluation_status", "completed"),
+                        "submitted_at": s.get("submitted_at"),
+                        "repository_url": s.get("repository_url"),
+                        "checks_passed": s.get("checks_passed"),
+                        "checks_total": s.get("checks_total"),
+                        "team": s.get("team"),
+                        "problem": s.get("problem"),
+                        "event_name": s.get("event_name", s.get("problem", "Hackathon Event")),
+                        "has_report": bool(s.get("evaluation_report"))
+                    }
+                    for s in data.get("submissions", [])
+                ]
+                self.send_json({"reports": rows})
                 return
         report_match = re.fullmatch(r"/api/reports/([A-Za-z0-9_-]{1,128})(?:/([A-Za-z0-9_-]{1,128}))?", path)
         if report_match:
