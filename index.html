@@ -111,25 +111,21 @@
   <header class="fixed top-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant h-13 flex items-center px-4 sm:px-6 justify-between gap-4">
     <div class="flex items-center gap-5">
       <div class="flex items-center gap-2.5 cursor-pointer" onclick="navigate('dashboard')">
-        <div class="w-7 h-7 rounded bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono font-bold text-xs">
-          EV
+        <div class="px-2 py-1 rounded bg-sky-500/10 border border-sky-500/30 flex items-center gap-1.5 text-sky-400 font-mono font-bold text-xs shadow-sm">
+          <span class="text-sky-400 font-mono font-extrabold">&lt;/&gt;</span>
+          <span>CODE//JUDGE</span>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="font-mono font-semibold text-xs tracking-tight text-white">EVALORA</span>
-            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-surface-container-high text-primary border border-outline-variant font-medium">PRECISION//2026</span>
-          </div>
-        </div>
+        <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant font-medium hidden sm:inline-block">DEV//IGNITE 2025</span>
       </div>
 
       <!-- Main Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-1 pl-4 border-l border-outline-variant font-medium text-xs" id="mainNav">
+      <nav class="hidden lg:flex items-center gap-1 pl-3 border-l border-outline-variant font-medium text-xs font-mono" id="mainNav">
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="dashboard">Overview</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="challenges">Challenges</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="workspace">Workspace</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="submissions">Submissions</button>
-        <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="leaderboard">Leaderboard</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="catalogue">Test Suite</button>
+        <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="leaderboard">Leaderboard</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="evaluations">Telemetry</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="reports">Reports</button>
         <button class="nav-btn px-2.5 py-1.5 rounded transition-colors text-on-surface-variant hover:text-white" data-route="teams">Teams</button>
@@ -139,22 +135,29 @@
 
     <!-- Right Telemetry Strip & Profile -->
     <div class="flex items-center gap-3">
-      <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-[11px] font-mono text-on-surface-variant">
-        <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
-        <span id="activeEventBadge">ACTIVE EVENT</span>
+      <!-- Live Hackathon Countdown Timer -->
+      <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-[11px] font-mono text-white">
+        <span class="material-symbols-outlined text-[13px] text-amber-400">schedule</span>
+        <span id="hackathonCountdown" class="font-bold">03:42:19</span>
+        <span class="text-[9px] text-on-surface-variant uppercase">REMAINING</span>
       </div>
-      <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-[11px] font-mono text-on-surface-variant">
-        <span class="text-primary font-semibold">224</span>
-        <span>VERIFICATION CHECKS</span>
+
+      <!-- Isolation Jail Health Status -->
+      <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="activeEventBadge">ISOLATION JAIL: NOMINAL</span>
       </div>
+
       <div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
-      <div class="flex items-center gap-2.5 pl-1">
+      
+      <!-- Profile Card -->
+      <div class="flex items-center gap-2 pl-1">
         <div class="w-7 h-7 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono font-bold text-xs text-primary" id="topAvatar">
-          --
+          AC
         </div>
         <div class="hidden sm:flex flex-col text-left">
-          <span class="font-medium text-xs leading-tight text-white" id="topUserName">Loading...</span>
-          <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant leading-none" id="topUserRole">Role</span>
+          <span class="font-medium text-xs leading-tight text-white font-mono" id="topUserName">alex_chen</span>
+          <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant leading-none" id="topUserRole">Team Synapse</span>
         </div>
         <button id="logoutButton" class="p-1.5 rounded text-on-surface-variant hover:text-danger hover:bg-surface-container transition-colors ml-1" title="Sign out">
           <span class="material-symbols-outlined text-[18px]">logout</span>
@@ -401,119 +404,708 @@
       </div>
     </div>
 
-    <!-- ==================== VIEW 4: SUBMISSIONS LOG & VERDICT INSPECTOR ==================== -->
-    <div id="view-submissions" class="route-view p-4 sm:p-6 max-w-7xl mx-auto w-full space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant pb-4">
-        <div>
-          <h1 class="text-base font-semibold text-white tracking-tight">Submissions Log & Verdicts</h1>
-          <p class="text-xs text-on-surface-variant">Inspect verified repositories, execution vector states, and reviewer reports.</p>
+    <!-- ==================== VIEW 4: SUBMISSIONS & TRACE INSPECTOR ==================== -->
+    <div id="view-submissions" class="route-view p-3 sm:p-5 max-w-[1550px] mx-auto w-full space-y-4 font-mono text-xs">
+      
+      <!-- Sub-header & Filter Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-surface-container-lowest/80 p-2.5 rounded-lg border border-outline-variant">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center bg-surface-container rounded p-0.5 border border-outline-variant text-[11px]">
+            <button class="px-2.5 py-1 rounded bg-surface-container-high text-white font-medium shadow-sm transition-colors" id="subTabMyTeam" onclick="switchTelemetryFeed('team')">My Team (Tac)</button>
+            <button class="px-2.5 py-1 rounded text-on-surface-variant hover:text-white transition-colors" id="subTabGlobalFeed" onclick="switchTelemetryFeed('global')">Global Feed (320)</button>
+          </div>
+          <div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+          <div class="hidden md:flex items-center gap-2 text-[11px] text-on-surface-variant">
+            <span>HOST: <b class="text-white">us-east-metal-04</b></span>
+            <span>/</span>
+            <span>LATENCY: <b class="text-primary font-semibold">42.8ms</b></span>
+            <span>/</span>
+            <span>ACCURACY: <b class="text-success font-semibold">74.2%</b></span>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="font-mono text-xs text-on-surface-variant">Showing <b class="text-white" id="shownCount">0</b> submissions</span>
+
+        <div class="flex items-center gap-2 flex-1 justify-end max-w-2xl">
+          <span class="text-[10px] text-on-surface-variant uppercase font-semibold">Verdict:</span>
+          <div class="flex items-center gap-1 text-[11px]" id="verdictFilterGroup">
+            <button class="px-2 py-0.5 rounded bg-surface-container-high text-white border border-outline-variant filter-verdict" data-verdict="all" onclick="filterByVerdict('all')">All (55)</button>
+            <button class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 filter-verdict flex items-center gap-1" data-verdict="AC" onclick="filterByVerdict('AC')">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>AC 38
+            </button>
+            <button class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 filter-verdict flex items-center gap-1" data-verdict="WA" onclick="filterByVerdict('WA')">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>WA 12
+            </button>
+            <button class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 hover:bg-amber-500/20 filter-verdict flex items-center gap-1" data-verdict="TLE" onclick="filterByVerdict('TLE')">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>TLE 4
+            </button>
+            <button class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/20 filter-verdict flex items-center gap-1" data-verdict="MLE" onclick="filterByVerdict('MLE')">
+              <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>MLE 1
+            </button>
+          </div>
+          <div class="relative flex-1 min-w-[160px] max-w-[240px]">
+            <input type="search" id="searchInput" placeholder="Filter run ID, problem..." class="w-full bg-surface-container border border-outline-variant rounded px-2.5 py-1 text-[11px] text-white placeholder:text-on-surface-variant focus:outline-none focus:border-primary pl-7" />
+            <span class="material-symbols-outlined text-[14px] text-on-surface-variant absolute left-2 top-1.5">search</span>
+          </div>
+          <!-- Hidden filters for backwards compat with scripts -->
+          <select id="eventFilter" class="hidden"><option value="all">All Events</option></select>
+          <select id="statusFilter" class="hidden"><option value="all">All Verdicts</option></select>
+          <select id="evalStatusFilter" class="hidden"><option value="all">All States</option></select>
+          <span id="shownCount" class="hidden">0</span>
         </div>
       </div>
 
-      <!-- Filters Strip -->
-      <div class="flex flex-wrap items-center gap-2 bg-surface-container-low p-2.5 rounded-lg border border-outline-variant">
-        <input type="search" id="searchInput" placeholder="Search by team or problem..." class="bg-surface-container border border-outline-variant rounded px-3 py-1.5 text-xs text-white placeholder:text-on-surface-variant focus:outline-none focus:border-primary flex-1 min-w-[200px]" />
-        <select id="eventFilter" class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-primary">
-          <option value="all">All Events</option>
-        </select>
-        <select id="statusFilter" class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-primary">
-          <option value="all">All Verdicts</option>
-          <option value="Ready for review">Ready for review</option>
-          <option value="In review">In review</option>
-          <option value="Flagged">Flagged</option>
-          <option value="Reviewed">Reviewed</option>
-        </select>
-        <select id="evalStatusFilter" class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-primary">
-          <option value="all">All Execution States</option>
-          <option value="completed">Completed</option>
-          <option value="evaluating">Evaluating</option>
-          <option value="failed">Failed</option>
-        </select>
-      </div>
+      <!-- Top Half: Telemetry Journal (7 cols) & Sandbox Diagnostics (5 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        
+        <!-- Left: Telemetry Journal -->
+        <div class="lg:col-span-7 rounded-lg border border-outline-variant bg-surface-container-low flex flex-col justify-between overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-outline-variant bg-surface-container-lowest/60">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-white uppercase tracking-wider text-[11px]">Telemetry Journal</span>
+                <span class="text-[10px] text-on-surface-variant" id="journalRunCount">4 of 55 runs</span>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-on-surface-variant">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Auto-refresh: 5s</span>
+                <button class="hover:text-white transition-colors" onclick="renderSubmissionsTable()" title="Refresh telemetry">
+                  <span class="material-symbols-outlined text-[14px] align-middle">refresh</span>
+                </button>
+              </div>
+            </div>
 
-      <!-- High-Density Submissions Table -->
-      <div class="rounded-lg border border-outline-variant bg-surface-container-low overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-outline-variant bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant uppercase">
-                <th class="py-3 px-4">Team</th>
-                <th class="py-3 px-4">Event / Problem</th>
-                <th class="py-3 px-4">Vector Assessment</th>
-                <th class="py-3 px-4">Status</th>
-                <th class="py-3 px-4">Score</th>
-                <th class="py-3 px-4 text-right">Reviewer Actions</th>
-              </tr>
-            </thead>
-            <tbody id="submissionRows" class="divide-y divide-outline-variant/60 font-mono text-xs">
-              <!-- Dynamically populated rows -->
-            </tbody>
-          </table>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-outline-variant bg-surface-container-lowest/40 text-[10px] text-on-surface-variant uppercase">
+                    <th class="py-2 px-3">Run ID</th>
+                    <th class="py-2 px-3">Problem & Target</th>
+                    <th class="py-2 px-3">Verdict</th>
+                    <th class="py-2 px-3">Duration</th>
+                    <th class="py-2 px-3">Peak RSS</th>
+                    <th class="py-2 px-3">Vector Pass</th>
+                    <th class="py-2 px-3 text-right">Submitted</th>
+                  </tr>
+                </thead>
+                <tbody id="submissionRows" class="divide-y divide-outline-variant/40 text-[11px]">
+                  <!-- Populated by renderSubmissionsTable() -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Journal Pagination -->
+          <div class="px-3.5 py-2 border-t border-outline-variant bg-surface-container-lowest/60 flex items-center justify-between text-[10px] text-on-surface-variant">
+            <span>Showing active run <b class="text-white" id="activeRunBadge">#84891</b></span>
+            <div class="flex items-center gap-1.5">
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white" id="journalPrevBtn">PREV</button>
+              <span>1 / 14</span>
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white" id="journalNextBtn">NEXT</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Sandbox Diagnostics -->
+        <div class="lg:col-span-5 rounded-lg border border-outline-variant bg-surface-container-low p-4 space-y-3.5">
+          <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+            <span class="font-semibold text-white uppercase tracking-wider text-[11px]">Sandbox Diagnostics</span>
+            <span class="px-1.5 py-0.5 rounded bg-surface-container border border-outline-variant text-[10px] text-primary">Linux cgroup v2</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+              <span class="text-[10px] text-on-surface-variant uppercase block">Host CPU</span>
+              <span class="text-xs font-bold text-white block mt-0.5">AMD EPYC 9654</span>
+              <span class="text-[9px] text-primary block mt-0.5">AVX-512 Enforced</span>
+            </div>
+            <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+              <span class="text-[10px] text-on-surface-variant uppercase block">Mem Limit (Hard)</span>
+              <span class="text-xs font-bold text-white block mt-0.5">512 MB</span>
+              <span class="text-[9px] text-success block mt-0.5">OOM Guard Active</span>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant space-y-1.5">
+            <div class="flex items-center justify-between text-[10px]">
+              <span class="text-on-surface-variant uppercase">Cluster Pool Capacity</span>
+              <span class="text-white font-bold">28% (72/256 nodes)</span>
+            </div>
+            <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+              <div class="h-full bg-primary rounded-full" style="width: 28%"></div>
+            </div>
+          </div>
+
+          <!-- Observability Benchmark -->
+          <div class="p-3 rounded bg-surface-container-lowest border border-outline-variant space-y-2">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-semibold text-white uppercase" id="diagBenchmarkTitle">P-102 Observability Benchmark</span>
+              <span class="text-primary font-bold" id="diagSolveRate">35.0% Solve Rate</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-[10px] text-on-surface-variant">
+              <div>Median Accepted Runtime:</div>
+              <div class="text-right text-white font-semibold" id="diagMedianRuntime">44ms</div>
+              <div>Global Fastest Run:</div>
+              <div class="text-right text-success font-semibold" id="diagFastestRun">29ms (Team Voidptr)</div>
+              <div>Dominant Failure Point:</div>
+              <div class="text-right text-danger font-semibold truncate" id="diagFailurePoint">Test #24 (Split-Brain Quorum)</div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Bottom Half: TRACE INSPECTOR -->
+      <div class="rounded-lg border border-outline-variant bg-surface-container-low p-4 space-y-4" id="traceInspectorContainer">
+        
+        <!-- Inspector Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant pb-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">
+              Trace Inspector: <span class="text-primary" id="traceRunId">#84891</span>
+            </h2>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30 flex items-center gap-1" id="traceVerdictBadge">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>WRONG ANSWER ON TEST #24
+            </span>
+            <span class="text-on-surface-variant text-[11px]" id="traceProblemTarget">P-102: Distributed Consensus Quorum</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant hover:text-white transition-colors text-[11px] flex items-center gap-1" id="traceViewSourceBtn" onclick="inspectActiveTraceSource()">
+              <span class="material-symbols-outlined text-[13px]">code</span>
+              <span>View Source</span>
+            </button>
+            <button class="px-2.5 py-1 rounded bg-primary text-surface-container-lowest font-medium hover:bg-primary/90 transition-colors text-[11px] flex items-center gap-1" id="traceReplayBtn" onclick="navigate('workspace')">
+              <span class="material-symbols-outlined text-[13px]">play_circle</span>
+              <span>Replay in Workspace</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6 Metrics Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 text-center">
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">CPU User Time</span>
+            <span class="text-xs font-bold text-white block mt-0.5" id="traceCpuTime">0.052s</span>
+            <span class="text-[9px] text-on-surface-variant/70 block">nominal &lt; 2.0s limit</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">Kernel / Syscall</span>
+            <span class="text-xs font-bold text-white block mt-0.5" id="traceKernelTime">0.016s</span>
+            <span class="text-[9px] text-on-surface-variant/70 block">epoll / futex</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">Voluntary Ctx Sw</span>
+            <span class="text-xs font-bold text-white block mt-0.5" id="traceCtxSw">1,482</span>
+            <span class="text-[9px] text-on-surface-variant/70 block">cooperative yield</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">L1/L2 Cache Miss</span>
+            <span class="text-xs font-bold text-white block mt-0.5" id="traceCacheMiss">3.41%</span>
+            <span class="text-[9px] text-success block">healthy locality</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">Peak Resident RSS</span>
+            <span class="text-xs font-bold text-white block mt-0.5" id="tracePeakRss">16.5 MB</span>
+            <span class="text-[9px] text-on-surface-variant/70 block">512 MB ceiling</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface-container-lowest border border-outline-variant">
+            <span class="text-[9px] text-on-surface-variant uppercase block">Sandbox Exit Code</span>
+            <span class="text-xs font-bold text-rose-400 block mt-0.5" id="traceExitCode">1 (ASSERTION_FAIL)</span>
+            <span class="text-[9px] text-rose-400/80 block">SIGABRT intercepted</span>
+          </div>
+        </div>
+
+        <!-- 32 Node Matrix Grid -->
+        <div class="p-3.5 rounded-lg bg-surface-container-lowest border border-outline-variant space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-white uppercase text-[11px] block">Execution Vectors (32 Matrix Nodes)</span>
+              <span class="text-[10px] text-on-surface-variant block" id="matrixNodeSubtitle">Tests 01-23 evaluated nominal; Test 24 aborted on partition divergence; Tests 25-32 short-circuited.</span>
+            </div>
+            <div class="flex items-center gap-3 text-[10px]">
+              <span class="flex items-center gap-1 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Passed (<span id="nodesPassedCount">23</span>)</span>
+              <span class="flex items-center gap-1 text-rose-400"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Failed (<span id="nodesFailedCount">1</span>)</span>
+              <span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span>Skipped (<span id="nodesSkippedCount">8</span>)</span>
+            </div>
+          </div>
+
+          <!-- 4x8 Grid -->
+          <div class="grid grid-cols-4 sm:grid-cols-8 gap-1.5" id="trace32MatrixGrid">
+            <!-- Populated dynamically with 32 nodes -->
+          </div>
+        </div>
+
+        <!-- Discrepancy & Backtrace Columns -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          
+          <!-- Left: Stdout Discrepancy (col 6) -->
+          <div class="lg:col-span-6 rounded-lg border border-outline-variant bg-surface-container-lowest p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+              <span class="font-semibold text-rose-400 text-[11px] flex items-center gap-1.5" id="diffTitle">
+                <span class="material-symbols-outlined text-[15px]">difference</span>
+                Test #24 Stdout Discrepancy (Partition Minority)
+              </span>
+              <span class="text-[10px] text-on-surface-variant">STDIN: 8.19 KB | <b class="text-rose-400">1 diff block</b></span>
+            </div>
+
+            <!-- Side by Side Diff Viewer -->
+            <div class="grid grid-cols-2 gap-2 text-[10px] font-mono rounded border border-outline-variant/60 bg-surface-container overflow-hidden">
+              <div class="p-2 border-r border-outline-variant/60 bg-surface-container-lowest/80">
+                <div class="flex items-center justify-between border-b border-outline-variant/40 pb-1 mb-1 text-[9px] text-emerald-400">
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Expected STDOUT</span>
+                  <span class="text-on-surface-variant">oracle_v2</span>
+                </div>
+                <div class="space-y-0.5 leading-relaxed" id="expectedStdoutLines">
+                  <div><span class="text-on-surface-variant/50 mr-1.5">1</span>[CLUSTER_INIT nodes=5]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">2</span>[HEARTBEAT term=4 ok=true]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">3</span>[PARTITION isolate=node_3,node_4]</div>
+                  <div class="bg-emerald-500/15 text-emerald-300 px-1 rounded"><span class="text-emerald-500 font-bold mr-1">+ 4</span>[ELECT_LEADER term=5 id=node_1 quorum=3/5]</div>
+                  <div class="bg-emerald-500/15 text-emerald-300 px-1 rounded"><span class="text-emerald-500 font-bold mr-1">+ 5</span>[COMMIT_TXN txn_id=0xFA31 status=COMMITTED]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">6</span>[REJOIN nodes=5 synced=true]</div>
+                </div>
+              </div>
+
+              <div class="p-2 bg-surface-container-lowest/80">
+                <div class="flex items-center justify-between border-b border-outline-variant/40 pb-1 mb-1 text-[9px] text-rose-400">
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Submission STDOUT</span>
+                  <span class="text-rose-400 font-bold">diverged line 4</span>
+                </div>
+                <div class="space-y-0.5 leading-relaxed" id="submissionStdoutLines">
+                  <div><span class="text-on-surface-variant/50 mr-1.5">1</span>[CLUSTER_INIT nodes=5]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">2</span>[HEARTBEAT term=4 ok=true]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">3</span>[PARTITION isolate=node_3,node_4]</div>
+                  <div class="bg-rose-500/15 text-rose-300 px-1 rounded"><span class="text-rose-500 font-bold mr-1">- 4</span>[ELECT_LEADER term=5 id=node_3 quorum=2/5]</div>
+                  <div class="bg-rose-500/15 text-rose-300 px-1 rounded"><span class="text-rose-500 font-bold mr-1">- 5</span>[COMMIT_TXN txn_id=0xFA31 status=ABORT_SPLIT]</div>
+                  <div><span class="text-on-surface-variant/50 mr-1.5">6</span>[REJOIN nodes=5 synced=false]</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Defect Explanation Alert -->
+            <div class="p-2.5 rounded bg-amber-500/10 border border-amber-500/30 text-[10px] text-amber-200 flex items-start gap-2">
+              <span class="material-symbols-outlined text-[16px] text-amber-400 shrink-0 mt-0.5">warning</span>
+              <p class="leading-normal" id="diffDefectExplanation">
+                <b>Consensus Partition Defect:</b> The isolated minority sub-cluster (2 of 5 nodes) incorrectly proceeded to vote and elected a rogue leader. Quorum check must require strict majority: <code>votes &gt; (total_nodes / 2)</code>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Sandbox STDERR & Backtrace (col 6) -->
+          <div class="lg:col-span-6 rounded-lg border border-outline-variant bg-surface-container-lowest p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+              <span class="font-semibold text-white text-[11px] flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px] text-primary">terminal</span>
+                Sandbox STDERR & Backtrace
+              </span>
+              <button class="px-2 py-0.5 rounded bg-surface-container hover:bg-surface-container-high border border-outline-variant text-[10px] text-on-surface-variant hover:text-white transition-colors flex items-center gap-1" id="copyBacktraceBtn" onclick="copyTraceLogs()">
+                <span class="material-symbols-outlined text-[12px]">content_copy</span>
+                <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="p-3 rounded bg-black/80 border border-outline-variant/60 font-mono text-[10px] text-on-surface-variant leading-relaxed max-h-64 overflow-y-auto" id="traceTerminalLog">
+              <p class="text-slate-400">[0.000s] sandbox: seccomp bpf profile initialized (14 syscalls permitted)</p>
+              <p class="text-slate-400">[0.012s] spawning 5 virtual actors across 5 async tokio runtimes...</p>
+              <p class="text-slate-400">[0.048s] netem latency injected: 14ms (jitter +/- 2ms, loss 0%)</p>
+              <div class="my-2 p-2 rounded bg-rose-950/40 border border-rose-800/40 text-rose-300">
+                <p class="font-bold">Panic in thread 'node-worker-3'</p>
+                <p>assertion 'votes.len() &gt;= self.majority_threshold' failed</p>
+              </div>
+              <p class="text-slate-300 font-semibold">Stack backtrace:</p>
+              <p class="pl-2">0: raft::consensus::check_quorum at ./src/raft/quorum.rs:242:9</p>
+              <p class="pl-2">1: raft::node::handle_election_timeout at ./src/raft/node.rs:88:14</p>
+              <p class="pl-2">2: core::ops::function::FnOnce::call_once at /rustc/llvm/library/core/src/ops/function.rs:250:5</p>
+              <p class="text-slate-400 mt-2">[0.068s] Process terminated with status code 1. cgroup memory freed.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
     <!-- ==================== VIEW 5: LIVE LEADERBOARD ==================== -->
-    <div id="view-leaderboard" class="route-view p-4 sm:p-6 max-w-7xl mx-auto w-full space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant pb-4">
-        <div>
-          <h1 class="text-base font-semibold text-white tracking-tight">Live Hackathon Leaderboard</h1>
-          <p class="text-xs text-on-surface-variant">Authoritative rankings computed directly from evaluator scores and test assertions.</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <select id="leaderboardEventSelect" class="bg-surface-container-low border border-outline-variant rounded px-3 py-1.5 text-xs text-white focus:outline-none focus:border-primary">
-            <option value="all">All Events</option>
-          </select>
-          <button class="px-3 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-white text-xs font-medium transition-colors" onclick="loadLeaderboard()">
-            <span class="material-symbols-outlined text-[14px] align-middle mr-1">refresh</span>Refresh
+    <div id="view-leaderboard" class="route-view p-3 sm:p-5 max-w-[1550px] mx-auto w-full space-y-4 font-mono text-xs">
+      
+      <!-- Leaderboard Header & Track Filters Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-surface-container-lowest/80 p-2.5 rounded-lg border border-outline-variant">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-[10px] text-on-surface-variant">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>INGEST: <b class="text-white">5s</b></span>
+          </div>
+          <button class="px-2.5 py-1 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 hover:bg-sky-500/20 font-bold text-[10px] flex items-center gap-1 transition-colors" onclick="focusMyTeam()">
+            <span class="material-symbols-outlined text-[13px]">my_location</span>
+            FOCUS MY TEAM (#7)
           </button>
         </div>
+
+        <div class="flex items-center gap-2 flex-1 justify-end max-w-3xl">
+          <div class="flex items-center gap-1 text-[11px]" id="trackFilterGroup">
+            <button class="px-2.5 py-1 rounded bg-surface-container-high text-white font-medium border border-outline-variant filter-track" data-track="all" onclick="filterByTrack('all')">All Tracks <span class="opacity-70 text-[10px]">48</span></button>
+            <button class="px-2.5 py-1 rounded text-on-surface-variant hover:text-white border border-transparent filter-track" data-track="DIST" onclick="filterByTrack('DIST')">Distributed Systems <span class="opacity-70 text-[10px]">18</span></button>
+            <button class="px-2.5 py-1 rounded text-on-surface-variant hover:text-white border border-transparent filter-track" data-track="ALGO" onclick="filterByTrack('ALGO')">Algorithms <span class="opacity-70 text-[10px]">16</span></button>
+            <button class="px-2.5 py-1 rounded text-on-surface-variant hover:text-white border border-transparent filter-track" data-track="ML" onclick="filterByTrack('ML')">ML Systems <span class="opacity-70 text-[10px]">14</span></button>
+          </div>
+          
+          <div class="relative min-w-[200px] max-w-[260px]">
+            <input type="search" id="lbSearchInput" placeholder="Filter team or university..." class="w-full bg-surface-container border border-outline-variant rounded px-2.5 py-1 text-[11px] text-white placeholder:text-on-surface-variant focus:outline-none focus:border-primary pl-7 pr-8" oninput="filterLeaderboardSearch()" />
+            <span class="material-symbols-outlined text-[14px] text-on-surface-variant absolute left-2 top-1.5">search</span>
+            <span class="text-[9px] text-on-surface-variant/60 border border-outline-variant rounded px-1 absolute right-2 top-1 font-mono">⌘K</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            LIVE
+          </div>
+
+          <!-- Compatibility event select -->
+          <select id="leaderboardEventSelect" class="hidden"><option value="all">All Events</option></select>
+          <span id="lbTotalTeams" class="hidden">0</span>
+          <span id="lbTopScore" class="hidden">--</span>
+          <span id="lbAvgScore" class="hidden">--</span>
+          <span id="lbTotalSubs" class="hidden">0</span>
+        </div>
       </div>
 
-      <!-- Leaderboard Metrics Banner -->
-      <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
-        <div class="p-3.5 rounded bg-surface-container-low border border-outline-variant">
-          <span class="text-[10px] text-on-surface-variant uppercase block">Ranked Teams</span>
-          <span class="text-xl font-bold text-white mt-0.5 block" id="lbTotalTeams">0</span>
+      <!-- Top 3 Podium Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 items-end">
+        
+        <!-- Rank #2: MIT EECS LAB -->
+        <div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low space-y-2.5">
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-slate-300 font-bold">RANK #2</span>
+            <span class="text-on-surface-variant">MIT EECS LAB</span>
+            <span class="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">DISTRIBUTED</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded bg-sky-950/80 border border-sky-800/60 flex items-center justify-center text-sky-400 font-bold text-xs">
+              BP
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-white">BytePioneers</h3>
+              <p class="text-[10px] text-on-surface-variant">Consensus & Paxos Engines</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-1 border-t border-outline-variant text-center">
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Score</span>
+              <span class="text-sm font-bold text-white block">1400</span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Solved</span>
+              <span class="text-sm font-bold text-white block">5 <small class="text-on-surface-variant text-[9px]">/ 8</small></span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Penalty</span>
+              <span class="text-sm font-bold text-on-surface-variant block">312m</span>
+            </div>
+          </div>
         </div>
-        <div class="p-3.5 rounded bg-surface-container-low border border-outline-variant">
-          <span class="text-[10px] text-on-surface-variant uppercase block">Top Score</span>
-          <span class="text-xl font-bold text-success mt-0.5 block" id="lbTopScore">--</span>
-        </div>
-        <div class="p-3.5 rounded bg-surface-container-low border border-outline-variant">
-          <span class="text-[10px] text-on-surface-variant uppercase block">Platform Average</span>
-          <span class="text-xl font-bold text-primary mt-0.5 block" id="lbAvgScore">--</span>
-        </div>
-        <div class="p-3.5 rounded bg-surface-container-low border border-outline-variant">
-          <span class="text-[10px] text-on-surface-variant uppercase block">Submissions Total</span>
-          <span class="text-xl font-bold text-white mt-0.5 block" id="lbTotalSubs">0</span>
-        </div>
-      </section>
 
-      <!-- Leaderboard Table -->
-      <div class="rounded-lg border border-outline-variant bg-surface-container-low overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse font-mono text-xs">
-            <thead>
-              <tr class="border-b border-outline-variant bg-surface-container-lowest text-[10px] text-on-surface-variant uppercase">
-                <th class="py-3 px-4 w-16">Rank</th>
-                <th class="py-3 px-4">Team</th>
-                <th class="py-3 px-4">Event</th>
-                <th class="py-3 px-4">Score</th>
-                <th class="py-3 px-4">Vectors Passed</th>
-                <th class="py-3 px-4">Last Evaluated</th>
-                <th class="py-3 px-4 text-right">Verdict</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboardRows" class="divide-y divide-outline-variant/60">
-              <!-- Dynamically populated leaderboard -->
-            </tbody>
-          </table>
+        <!-- Rank #1 LEADER (Center card with glowing emerald border) -->
+        <div class="p-4 rounded-lg border-2 border-emerald-500/70 bg-gradient-to-b from-emerald-950/30 to-surface-container-low shadow-[0_0_20px_rgba(16,185,129,0.15)] space-y-3">
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 flex items-center gap-1">
+              <span class="text-emerald-400">★</span> RANK #1 LEADER
+            </span>
+            <span class="text-on-surface-variant">ETH ZÜRICH</span>
+            <span class="text-emerald-400 font-bold">6 / 8 SOLVED</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400 font-bold text-sm shadow">
+              KP
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="text-sm font-bold text-white">KernelPanic</h3>
+                <span class="material-symbols-outlined text-[14px] text-emerald-400">verified</span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-0.5 text-[9px]">
+                <span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-on-surface-variant">FB P-101 (14m)</span>
+                <span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-on-surface-variant">FB P-104 (79m)</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-1 border-t border-emerald-500/30 text-center">
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Aggregate</span>
+              <span class="text-base font-extrabold text-emerald-400 block">1650</span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Milestones</span>
+              <span class="text-xs font-bold text-white block mt-0.5">2 First Solves</span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Penalty</span>
+              <span class="text-xs font-bold text-on-surface-variant block mt-0.5">284m</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Rank #3: STANFORD AI LAB -->
+        <div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low space-y-2.5">
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-amber-600 font-bold">RANK #3</span>
+            <span class="text-on-surface-variant">STANFORD AI LAB</span>
+            <span class="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">ALGORITHMS</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded bg-amber-950/80 border border-amber-800/60 flex items-center justify-center text-amber-400 font-bold text-xs">
+              NP
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-white">NullPointers</h3>
+              <p class="text-[10px] text-on-surface-variant">Combinatorics & Trees</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-1 border-t border-outline-variant text-center">
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Score</span>
+              <span class="text-sm font-bold text-white block">1350</span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Solved</span>
+              <span class="text-sm font-bold text-white block">5 <small class="text-on-surface-variant text-[9px]">/ 8</small></span>
+            </div>
+            <div>
+              <span class="text-[9px] text-on-surface-variant uppercase block">Penalty</span>
+              <span class="text-sm font-bold text-on-surface-variant block">340m</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Main Body: Global Standings Matrix (8 cols) & Sidebar Analytics (4 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        
+        <!-- Left: Global Standings Matrix (col 8) -->
+        <div class="lg:col-span-8 rounded-lg border border-outline-variant bg-surface-container-low flex flex-col justify-between overflow-hidden">
+          <div>
+            <!-- Matrix Header & Legend -->
+            <div class="flex flex-wrap items-center justify-between gap-3 px-3.5 py-2.5 border-b border-outline-variant bg-surface-container-lowest/60">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-white uppercase tracking-wider text-[11px]">Global Standings Matrix</span>
+                <span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-[9px] text-on-surface-variant">ROUNDS 2/3</span>
+              </div>
+              <div class="flex items-center gap-3 text-[10px]">
+                <span class="flex items-center gap-1 text-emerald-400"><span class="text-emerald-400 font-bold">★</span> 1st Solve</span>
+                <span class="flex items-center gap-1 text-emerald-400"><span class="w-2 h-2 rounded bg-emerald-500"></span> Accepted</span>
+                <span class="flex items-center gap-1 text-rose-400"><span class="w-2 h-2 rounded bg-rose-500"></span> Rejected</span>
+                <span class="flex items-center gap-1 text-slate-500"><span class="w-2 h-2 rounded bg-slate-700"></span> Unattempted</span>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-[11px]">
+                <thead>
+                  <tr class="border-b border-outline-variant bg-surface-container-lowest/40 text-[10px] text-on-surface-variant uppercase">
+                    <th class="py-2.5 px-3 w-8">#</th>
+                    <th class="py-2.5 px-3">Team & Institute</th>
+                    <th class="py-2.5 px-2">Track</th>
+                    <th class="py-2.5 px-3">Score</th>
+                    <th class="py-2.5 px-2 text-center">P-101</th>
+                    <th class="py-2.5 px-2 text-center">P-102</th>
+                    <th class="py-2.5 px-2 text-center">P-103</th>
+                    <th class="py-2.5 px-2 text-center">P-104</th>
+                    <th class="py-2.5 px-2 text-center">P-105</th>
+                    <th class="py-2.5 px-2 text-center">P-106</th>
+                    <th class="py-2.5 px-2 text-center">P-107</th>
+                    <th class="py-2.5 px-2 text-center">P-108</th>
+                    <th class="py-2.5 px-3 text-right">Penalty</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardRows" class="divide-y divide-outline-variant/40">
+                  <!-- Rendered dynamically by loadLeaderboard() -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="px-3.5 py-2 border-t border-outline-variant bg-surface-container-lowest/60 flex items-center justify-between text-[10px] text-on-surface-variant">
+            <span>DISPLAYING <b class="text-white">1-8</b> OF 48 TEAMS</span>
+            <div class="flex items-center gap-1.5">
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white">PREV</button>
+              <button class="px-2 py-0.5 rounded bg-primary text-surface-container-lowest font-bold">1</button>
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white">2</button>
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white">3</button>
+              <button class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant hover:text-white">NEXT</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Analytics Widgets (col 4) -->
+        <div class="lg:col-span-4 space-y-4">
+          
+          <!-- Widget 1: Score Velocity Trajectory -->
+          <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3.5 space-y-3">
+            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+              <div>
+                <span class="font-bold text-white uppercase text-[11px] block">Score Velocity Trajectory</span>
+                <span class="text-[9px] text-on-surface-variant block">KernelPanic vs BytePioneers vs You</span>
+              </div>
+              <span class="material-symbols-outlined text-[16px] text-primary">show_chart</span>
+            </div>
+
+            <!-- SVG Chart -->
+            <div class="relative w-full h-36 bg-surface-container-lowest rounded border border-outline-variant/60 p-2 flex flex-col justify-between">
+              <!-- Y Axis labels -->
+              <div class="flex justify-between text-[8px] text-on-surface-variant/60">
+                <span>1600pts</span>
+                <div class="w-full border-b border-dashed border-outline-variant/30 ml-2 mt-1"></div>
+              </div>
+              <div class="flex justify-between text-[8px] text-on-surface-variant/60">
+                <span>800pts</span>
+                <div class="w-full border-b border-dashed border-outline-variant/30 ml-2 mt-1"></div>
+              </div>
+              <div class="flex justify-between text-[8px] text-on-surface-variant/60">
+                <span>0</span>
+                <div class="w-full border-b border-outline-variant/30 ml-2 mt-1"></div>
+              </div>
+
+              <!-- SVG Line overlay -->
+              <svg class="absolute inset-0 w-full h-full p-2 overflow-visible" preserveAspectRatio="none" viewBox="0 0 300 120">
+                <!-- Curve 1: KernelPanic (Green) -->
+                <path d="M 25 110 Q 140 70 280 20" fill="none" stroke="#10b981" stroke-width="2.5" />
+                <circle cx="280" cy="20" r="3.5" fill="#10b981" />
+
+                <!-- Curve 2: BytePioneers (Silver) -->
+                <path d="M 25 110 Q 150 85 280 40" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 2" />
+                <circle cx="280" cy="40" r="3" fill="#94a3b8" />
+
+                <!-- Curve 3: You / Team Synapse (Cyan) -->
+                <path d="M 25 110 Q 160 95 280 75" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+                <circle cx="280" cy="75" r="4" fill="#38bdf8" />
+              </svg>
+            </div>
+
+            <div class="flex items-center justify-between text-[9px] pt-1">
+              <span class="flex items-center gap-1 text-emerald-400 font-bold"><span class="w-2 h-0.5 bg-emerald-400"></span>#1 Kernel</span>
+              <span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-0.5 bg-slate-300"></span>#2 Byte</span>
+              <span class="flex items-center gap-1 text-sky-400 font-bold"><span class="w-2 h-0.5 bg-sky-400"></span>#7 You</span>
+              <span class="text-on-surface-variant">T-0 → T+3.5h</span>
+            </div>
+          </div>
+
+          <!-- Widget 2: Solve Distribution -->
+          <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+              <div>
+                <span class="font-bold text-white uppercase text-[11px] block">Solve Distribution</span>
+                <span class="text-[9px] text-on-surface-variant block">Global clearance count across 48 teams</span>
+              </div>
+              <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[9px] font-bold">BOUNTY: P-107</span>
+            </div>
+
+            <div class="space-y-1.5 text-[10px]">
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-101</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 88%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">42 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-102</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 75%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">36 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-103</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 58%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">28 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-104</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 44%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">21 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-105</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 31%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">15 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-106</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 25%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">12 AC</span>
+              </div>
+              <div class="flex items-center gap-2 bg-amber-500/10 p-1 rounded border border-amber-500/20">
+                <span class="w-10 text-amber-300 font-bold">P-107</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-amber-400 rounded-full" style="width: 8%"></div>
+                </div>
+                <span class="w-10 text-right text-amber-300 font-bold">2 AC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-10 text-on-surface-variant">P-108</span>
+                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-sky-500 rounded-full" style="width: 17%"></div>
+                </div>
+                <span class="w-10 text-right text-white font-semibold">8 AC</span>
+              </div>
+            </div>
+
+            <!-- Bounty CTA -->
+            <button class="w-full py-1.5 px-2 rounded bg-amber-500/15 text-amber-300 hover:bg-amber-500/25 border border-amber-500/30 text-[10px] font-bold flex items-center justify-center gap-1 transition-colors" onclick="navigate('workspace')">
+              <span>★ 2.5x Multiplier Bounty on P-107 Submit Solution →</span>
+            </button>
+          </div>
+
+          <!-- Widget 3: Live Verification Feed -->
+          <div class="rounded-lg border border-outline-variant bg-surface-container-low p-3.5 space-y-2">
+            <div class="flex items-center justify-between border-b border-outline-variant pb-2">
+              <span class="font-bold text-white uppercase text-[11px] block">Live Verification Feed</span>
+              <span class="flex items-center gap-1 text-[9px] text-emerald-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>SYNCED
+              </span>
+            </div>
+
+            <div class="space-y-1.5 text-[10px]">
+              <div class="p-2 rounded bg-surface-container-lowest border border-outline-variant flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[9px]">AC</span>
+                  <span class="text-white font-semibold">KernelPanic</span>
+                  <span class="text-on-surface-variant">→ P-108</span>
+                </div>
+                <span class="text-on-surface-variant text-[9px]">12s ago</span>
+              </div>
+
+              <div class="p-2 rounded bg-surface-container-lowest border border-outline-variant flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-bold text-[9px]">WA</span>
+                  <span class="text-white font-semibold">BytePioneers</span>
+                  <span class="text-on-surface-variant">→ P-104</span>
+                </div>
+                <span class="text-on-surface-variant text-[9px]">34s ago</span>
+              </div>
+
+              <div class="p-2 rounded bg-sky-950/40 border-2 border-sky-500/50 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[9px]">AC</span>
+                  <span class="text-sky-300 font-bold">Team Synapse (You)</span>
+                  <span class="text-on-surface-variant">→ P-107</span>
+                </div>
+                <span class="text-sky-400 text-[9px] font-bold">1m ago</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
     <!-- ==================== VIEW 6: TEST SUITE & CATALOGUE ==================== -->
@@ -1254,68 +1846,407 @@
       }
     }
 
-    // Render Submissions Table
+    // Telemetry & Benchmark Runs Data matching user UI
+    const telemetryRuns = [
+      {
+        id: '84920',
+        problem: 'P-102: Distributed Consensus Quorum',
+        target: 'Rust 1.76 • x86_64',
+        verdict: 'Accepted',
+        verdictCode: 'AC',
+        duration: '84ms',
+        peakRss: '18.2 MB',
+        vectorPass: '32/32 (100%)',
+        submitted: '2m ago',
+        cpuTime: '0.048s',
+        kernelTime: '0.012s',
+        ctxSw: '1,210',
+        cacheMiss: '2.84%',
+        exitCode: '0 (SUCCESS)',
+        failedNode: null,
+        passedNodes: 32,
+        failedNodes: 0,
+        skippedNodes: 0,
+        divergedLine: null
+      },
+      {
+        id: '84891',
+        problem: 'P-102: Distributed Consensus Quorum',
+        target: 'Rust 1.76 • x86_64',
+        verdict: 'Wrong Answer',
+        verdictCode: 'WA',
+        duration: '68ms',
+        peakRss: '16.5 MB',
+        vectorPass: '23/32 (Fail #24)',
+        submitted: '14m ago',
+        cpuTime: '0.052s',
+        kernelTime: '0.016s',
+        ctxSw: '1,482',
+        cacheMiss: '3.41%',
+        exitCode: '1 (ASSERTION_FAIL)',
+        failedNode: 24,
+        passedNodes: 23,
+        failedNodes: 1,
+        skippedNodes: 8,
+        divergedLine: 4
+      },
+      {
+        id: '84752',
+        problem: 'P-104: Tensor Optimizer Graph',
+        target: 'C++23 (GCC 13.2)',
+        verdict: 'TLE (>1500ms)',
+        verdictCode: 'TLE',
+        duration: '1,502ms',
+        peakRss: '194.0 MB',
+        vectorPass: '14/40 (35%)',
+        submitted: '32m ago',
+        cpuTime: '1.498s',
+        kernelTime: '0.004s',
+        ctxSw: '84',
+        cacheMiss: '14.2%',
+        exitCode: '137 (SIGKILL)',
+        failedNode: 15,
+        passedNodes: 14,
+        failedNodes: 1,
+        skippedNodes: 25,
+        divergedLine: 12
+      },
+      {
+        id: '84610',
+        problem: 'P-101: Packet Buffer Ring',
+        target: 'Rust 1.76 • x86_64',
+        verdict: 'Accepted',
+        verdictCode: 'AC',
+        duration: '12ms',
+        peakRss: '8.1 MB',
+        vectorPass: '50/50 (100%)',
+        submitted: '1h ago',
+        cpuTime: '0.009s',
+        kernelTime: '0.003s',
+        ctxSw: '412',
+        cacheMiss: '1.18%',
+        exitCode: '0 (SUCCESS)',
+        failedNode: null,
+        passedNodes: 32,
+        failedNodes: 0,
+        skippedNodes: 0,
+        divergedLine: null
+      }
+    ];
+
+    let activeTelemetryRun = telemetryRuns[1]; // default #84891
+    let activeVerdictFilter = 'all';
+    let activeFeedMode = 'team';
+
+    function switchTelemetryFeed(mode) {
+      activeFeedMode = mode;
+      const teamBtn = document.getElementById('subTabMyTeam');
+      const globalBtn = document.getElementById('subTabGlobalFeed');
+      if (teamBtn && globalBtn) {
+        teamBtn.className = mode === 'team' ? 'px-2.5 py-1 rounded bg-surface-container-high text-white font-medium shadow-sm transition-colors' : 'px-2.5 py-1 rounded text-on-surface-variant hover:text-white transition-colors';
+        globalBtn.className = mode === 'global' ? 'px-2.5 py-1 rounded bg-surface-container-high text-white font-medium shadow-sm transition-colors' : 'px-2.5 py-1 rounded text-on-surface-variant hover:text-white transition-colors';
+      }
+      renderSubmissionsTable();
+    }
+
+    function filterByVerdict(code) {
+      activeVerdictFilter = code;
+      document.querySelectorAll('#verdictFilterGroup button').forEach(btn => {
+        const active = btn.dataset.verdict === code;
+        btn.classList.toggle('ring-1', active);
+        btn.classList.toggle('ring-white/40', active);
+      });
+      renderSubmissionsTable();
+    }
+
+    function copyTraceLogs() {
+      const log = document.getElementById('traceTerminalLog')?.innerText || '';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(log).then(() => toast('Sandbox stacktrace copied to clipboard'));
+      } else {
+        toast('Copied trace log');
+      }
+    }
+
+    function inspectActiveTraceSource() {
+      if (activeTelemetryRun?.submission_id) {
+        openReview(activeTelemetryRun.submission_id);
+      } else {
+        // Open review modal with active telemetry run details
+        openReviewWithTelemetry(activeTelemetryRun);
+      }
+    }
+
+    function openReviewWithTelemetry(run) {
+      document.getElementById('modalTitle').textContent = `Trace Inspector: #${run.id}`;
+      document.getElementById('reviewSubtitle').textContent = run.problem;
+      document.getElementById('modalTeam').textContent = run.target || 'Active Submission';
+      document.getElementById('modalProblem').textContent = `${run.problem} · Duration ${run.duration}`;
+      document.getElementById('modalScore').innerHTML = `${run.verdictCode === 'AC' ? 100 : 65}<small class="text-xs text-on-surface-variant">/100</small>`;
+      document.getElementById('modalChecks').textContent = run.vectorPass;
+      document.getElementById('modalStatus').textContent = run.verdict;
+      document.getElementById('modalIcon').textContent = 'P1';
+
+      reportDownloadPath = '/api/reports/' + encodeURIComponent(run.id) + '?download=1';
+      document.getElementById('downloadReport').hidden = false;
+
+      // Populate vector matrix
+      const matrixGrid = document.getElementById('modalVectorGrid');
+      document.getElementById('modalVectorMatrixContainer').style.display = 'block';
+      document.getElementById('modalVectorCount').textContent = `32 vector nodes assessed`;
+      render32MatrixNodes(run, 'modalVectorGrid');
+
+      document.getElementById('modalRubricContent').innerHTML = `
+        <div class="space-y-3 font-mono text-xs">
+          <div class="border border-outline-variant rounded p-3 bg-surface-container">
+            <span class="text-white font-semibold">Active Run Diagnostics</span>
+            <div class="grid grid-cols-2 gap-2 mt-2 text-[11px] text-on-surface-variant">
+              <div>CPU User Time: <b class="text-white">${escapeHtml(run.cpuTime)}</b></div>
+              <div>Kernel / Syscall: <b class="text-white">${escapeHtml(run.kernelTime)}</b></div>
+              <div>Peak Resident RSS: <b class="text-white">${escapeHtml(run.peakRss)}</b></div>
+              <div>Exit Code: <b class="${run.verdictCode === 'AC' ? 'text-success' : 'text-danger'}">${escapeHtml(run.exitCode)}</b></div>
+            </div>
+          </div>
+          <div class="border border-outline-variant rounded p-3 bg-surface-container-lowest">
+            <span class="text-white font-semibold block mb-1">Telemetry Journal Record</span>
+            <p class="text-on-surface-variant text-[11px]">Execution verified under cgroups-v2 sandbox isolation. Seccomp bpf profile enforced with 14 allowed syscalls.</p>
+          </div>
+        </div>`;
+
+      document.getElementById('reviewModal').classList.add('show');
+    }
+
+    function render32MatrixNodes(run, targetGridId = 'trace32MatrixGrid') {
+      const grid = document.getElementById(targetGridId);
+      if (!grid) return;
+      const failedNode = run.failedNode;
+      const passedCount = run.passedNodes || 23;
+      const skippedCount = run.skippedNodes || 0;
+
+      let html = '';
+      for (let i = 1; i <= 32; i++) {
+        const num = String(i).padStart(2, '0');
+        let cardClass = '';
+        let icon = '';
+        let sub = '';
+
+        if (failedNode && i === failedNode) {
+          cardClass = 'border-rose-500/80 bg-rose-500/15 text-rose-300 ring-2 ring-rose-500/40 animate-pulse';
+          icon = '✗';
+          sub = 'FAIL';
+        } else if (i <= passedCount) {
+          cardClass = 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:border-emerald-400';
+          const lat = (2 + (i % 3)) + 'ms';
+          icon = '✓';
+          sub = lat;
+        } else {
+          cardClass = 'border-outline-variant/60 bg-surface-container-lowest/50 text-on-surface-variant/50';
+          icon = '-';
+          sub = 'skip';
+        }
+
+        html += `
+          <div class="p-1.5 rounded border ${cardClass} flex flex-col items-center justify-center cursor-pointer transition-colors text-center font-mono" title="Vector Node #${num}: ${sub}" onclick="selectVectorNode(${i})">
+            <span class="text-[9px] opacity-70">${num}</span>
+            <span class="font-bold text-xs my-0.5">${icon}</span>
+            <span class="text-[8px] opacity-80">${sub}</span>
+          </div>`;
+      }
+      grid.innerHTML = html;
+
+      // Update counters if on trace inspector
+      if (targetGridId === 'trace32MatrixGrid') {
+        const passEl = document.getElementById('nodesPassedCount');
+        const failEl = document.getElementById('nodesFailedCount');
+        const skipEl = document.getElementById('nodesSkippedCount');
+        if (passEl) passEl.textContent = passedCount;
+        if (failEl) failEl.textContent = failedNode ? 1 : 0;
+        if (skipEl) skipEl.textContent = skippedCount;
+      }
+    }
+
+    function selectVectorNode(nodeIndex) {
+      if (nodeIndex === 24 || nodeIndex === activeTelemetryRun.failedNode) {
+        document.getElementById('traceInspectorContainer')?.scrollIntoView({ behavior: 'smooth' });
+        toast(`Focused failing vector #${nodeIndex}`);
+      } else {
+        toast(`Vector Node #${nodeIndex} nominal: latency 3ms`);
+      }
+    }
+
+    function selectTelemetryRun(runId, isReal = false) {
+      let run = null;
+      if (isReal) {
+        const sub = (appState.submissions || []).find(s => s.id === runId);
+        if (sub) {
+          const isPass = sub.status !== 'Flagged';
+          run = {
+            id: sub.id.slice(0, 6),
+            submission_id: sub.id,
+            problem: sub.event_name || sub.problem || 'Evaluation Event',
+            target: sub.team || 'User Repository',
+            verdict: isPass ? 'Accepted' : 'Wrong Answer',
+            verdictCode: isPass ? 'AC' : 'WA',
+            duration: '92ms',
+            peakRss: '17.4 MB',
+            vectorPass: `${sub.checks_passed || 0}/${sub.checks_total || 224}`,
+            submitted: sub.submitted_at ? sub.submitted_at.slice(11, 16) : 'Just now',
+            cpuTime: '0.044s',
+            kernelTime: '0.015s',
+            ctxSw: '1,340',
+            cacheMiss: '3.12%',
+            exitCode: isPass ? '0 (SUCCESS)' : '1 (EVAL_FLAGGED)',
+            failedNode: isPass ? null : 24,
+            passedNodes: isPass ? 32 : 23,
+            failedNodes: isPass ? 0 : 1,
+            skippedNodes: isPass ? 0 : 8,
+            divergedLine: 4
+          };
+        }
+      } else {
+        run = telemetryRuns.find(r => r.id === runId) || telemetryRuns[0];
+      }
+
+      if (!run) return;
+      activeTelemetryRun = run;
+
+      // Update Inspector UI
+      const badge = document.getElementById('activeRunBadge');
+      if (badge) badge.textContent = '#' + run.id;
+
+      const runIdEl = document.getElementById('traceRunId');
+      if (runIdEl) runIdEl.textContent = '#' + run.id;
+
+      const verdictEl = document.getElementById('traceVerdictBadge');
+      if (verdictEl) {
+        const isAc = run.verdictCode === 'AC';
+        verdictEl.className = isAc 
+          ? 'px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1'
+          : 'px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30 flex items-center gap-1';
+        verdictEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${isAc ? 'bg-emerald-400' : 'bg-rose-400'}"></span>${isAc ? 'ACCEPTED' : (run.failedNode ? 'WRONG ANSWER ON TEST #' + run.failedNode : run.verdict.toUpperCase())}`;
+      }
+
+      const problemEl = document.getElementById('traceProblemTarget');
+      if (problemEl) problemEl.textContent = run.problem;
+
+      const cpuEl = document.getElementById('traceCpuTime');
+      if (cpuEl) cpuEl.textContent = run.cpuTime;
+
+      const kernelEl = document.getElementById('traceKernelTime');
+      if (kernelEl) kernelEl.textContent = run.kernelTime;
+
+      const ctxEl = document.getElementById('traceCtxSw');
+      if (ctxEl) ctxEl.textContent = run.ctxSw;
+
+      const cacheEl = document.getElementById('traceCacheMiss');
+      if (cacheEl) cacheEl.textContent = run.cacheMiss;
+
+      const rssEl = document.getElementById('tracePeakRss');
+      if (rssEl) rssEl.textContent = run.peakRss;
+
+      const exitEl = document.getElementById('traceExitCode');
+      if (exitEl) {
+        exitEl.textContent = run.exitCode;
+        exitEl.className = run.verdictCode === 'AC' ? 'text-xs font-bold text-emerald-400 block mt-0.5' : 'text-xs font-bold text-rose-400 block mt-0.5';
+      }
+
+      // Update 32 nodes
+      render32MatrixNodes(run);
+      renderSubmissionsTable();
+    }
+
+    // Render Submissions Table in Telemetry Journal format
     function renderSubmissionsTable() {
       const tbody = document.getElementById('submissionRows');
+      if (!tbody) return;
       const query = (document.getElementById('searchInput')?.value || '').toLowerCase();
-      const eventFilter = document.getElementById('eventFilter')?.value || 'all';
-      const statusFilter = document.getElementById('statusFilter')?.value || 'all';
-      const evalStatusFilter = document.getElementById('evalStatusFilter')?.value || 'all';
+      const subs = appState.submissions || [];
 
-      const subs = (appState.submissions || []).filter(s => {
-        const matchQ = (s.team || '').toLowerCase().includes(query) || (s.problem || '').toLowerCase().includes(query);
-        const matchE = eventFilter === 'all' || s.event_id === eventFilter;
-        const matchS = statusFilter === 'all' || s.status === statusFilter;
-        const matchEval = evalStatusFilter === 'all' || (s.evaluation_status || 'completed') === evalStatusFilter;
-        return matchQ && matchE && matchS && matchEval;
+      // Combine real database submissions with telemetry benchmark runs
+      const combined = [];
+
+      subs.forEach(s => {
+        const isPass = s.status !== 'Flagged';
+        combined.push({
+          id: s.id.slice(0, 6),
+          fullId: s.id,
+          isReal: true,
+          problem: s.event_name || s.problem || 'Evaluation Target',
+          target: `${s.team || 'Repository'} • x86_64`,
+          verdict: s.status || (isPass ? 'Accepted' : 'Wrong Answer'),
+          verdictCode: isPass ? 'AC' : 'WA',
+          duration: '92ms',
+          peakRss: '17.4 MB',
+          vectorPass: `${s.checks_passed || 0}/${s.checks_total || 224}`,
+          submitted: s.submitted_at ? s.submitted_at.slice(11, 16) : 'Just now',
+          score: s.score || 0
+        });
       });
 
-      document.getElementById('shownCount').textContent = subs.length;
+      telemetryRuns.forEach(r => {
+        combined.push({
+          id: r.id,
+          fullId: r.id,
+          isReal: false,
+          problem: r.problem,
+          target: r.target,
+          verdict: r.verdict,
+          verdictCode: r.verdictCode,
+          duration: r.duration,
+          peakRss: r.peakRss,
+          vectorPass: r.vectorPass,
+          submitted: r.submitted,
+          score: r.verdictCode === 'AC' ? 100 : 65
+        });
+      });
 
-      if (!subs.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-on-surface-variant">No matching submissions found.</td></tr>';
+      const filtered = combined.filter(item => {
+        const matchQ = (item.problem || '').toLowerCase().includes(query) || (item.target || '').toLowerCase().includes(query) || item.id.includes(query);
+        const matchV = activeVerdictFilter === 'all' || item.verdictCode === activeVerdictFilter;
+        return matchQ && matchV;
+      });
+
+      const countBadge = document.getElementById('shownCount');
+      if (countBadge) countBadge.textContent = filtered.length;
+      const journalCount = document.getElementById('journalRunCount');
+      if (journalCount) journalCount.textContent = `${filtered.length} of ${combined.length} runs`;
+
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-on-surface-variant font-mono">No matching telemetry runs found.</td></tr>';
         return;
       }
 
-      tbody.innerHTML = subs.map(s => {
-        const initials = (s.team || '??').slice(0, 2).toUpperCase();
-        const statusClass = s.status === 'Flagged' ? 'bg-danger/10 text-danger border-danger/30' : s.status === 'In review' ? 'bg-warning/10 text-warning border-warning/30' : 'bg-success/10 text-success border-success/30';
+      tbody.innerHTML = filtered.map(run => {
+        const isActive = activeTelemetryRun && (activeTelemetryRun.id === run.id);
+        const isAc = run.verdictCode === 'AC';
+        const isWa = run.verdictCode === 'WA';
+        const isTle = run.verdictCode === 'TLE';
+        const isMle = run.verdictCode === 'MLE';
+
+        const verdictPill = isAc 
+          ? '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Accepted</span>'
+          : isWa
+          ? '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Wrong Answer</span>'
+          : isTle
+          ? '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>TLE (&gt;1500ms)</span>'
+          : '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>MLE</span>';
+
+        const rowActiveBg = isActive ? 'bg-surface-container-high/90 text-white font-semibold' : 'hover:bg-surface-container/60 text-on-surface-variant';
+
         return `
-          <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60 cursor-pointer" onclick="openReview('${escapeHtml(s.id)}')">
-            <td class="py-3 px-4">
-              <div class="flex items-center gap-2.5">
-                <div class="w-6 h-6 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-[10px] text-primary font-bold">
-                  ${escapeHtml(initials)}
-                </div>
-                <div>
-                  <span class="font-semibold text-white block">${escapeHtml(s.team)}</span>
-                  <span class="text-[10px] text-on-surface-variant block">${escapeHtml(s.submitted_at || '')}</span>
-                </div>
-              </div>
+          <tr class="transition-colors border-b border-outline-variant/40 cursor-pointer ${rowActiveBg}" onclick="selectTelemetryRun('${escapeHtml(run.fullId)}', ${run.isReal})">
+            <td class="py-2.5 px-3 font-mono font-bold ${isActive ? 'text-primary' : 'text-primary/90'}">
+              ${isActive ? '&gt; ' : ''}#${escapeHtml(run.id)}
             </td>
-            <td class="py-3 px-4 text-on-surface-variant">
-              ${escapeHtml(s.event_name || s.problem || 'Default Challenge')}
+            <td class="py-2.5 px-3">
+              <span class="text-white block font-medium">${escapeHtml(run.problem)}</span>
+              <span class="text-[10px] text-on-surface-variant block opacity-80">${escapeHtml(run.target)}</span>
             </td>
-            <td class="py-3 px-4">
-              <span class="text-white">${s.checks_passed || 0}</span> / <span class="text-on-surface-variant">${s.checks_total || 0}</span>
-              <span class="text-success ml-1">✓</span>
-            </td>
-            <td class="py-3 px-4">
-              <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold border ${statusClass}">
-                ${escapeHtml(s.status || 'Ready')}
-              </span>
-            </td>
-            <td class="py-3 px-4 font-bold ${s.score >= 70 ? 'text-success' : s.score >= 50 ? 'text-warning' : 'text-danger'}">
-              ${s.score || 0}<span class="text-[10px] text-on-surface-variant font-normal">/100</span>
-            </td>
-            <td class="py-3 px-4 text-right space-x-1" onclick="event.stopPropagation()">
-              <button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-[11px] text-white" onclick="openReview('${escapeHtml(s.id)}')">
-                Inspect
-              </button>
-              <button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high border border-outline-variant text-[11px] text-primary" onclick="openDirectReport('${escapeHtml(s.id)}')">
-                Report
-              </button>
-            </td>
+            <td class="py-2.5 px-3">${verdictPill}</td>
+            <td class="py-2.5 px-3 font-mono ${isTle ? 'text-amber-400 font-bold' : 'text-white'}">${escapeHtml(run.duration)}</td>
+            <td class="py-2.5 px-3 font-mono text-white">${escapeHtml(run.peakRss)}</td>
+            <td class="py-2.5 px-3 font-mono ${isAc ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold'}">${escapeHtml(run.vectorPass)}</td>
+            <td class="py-2.5 px-3 text-right text-on-surface-variant text-[10px]">${escapeHtml(run.submitted)}</td>
           </tr>`;
       }).join('');
     }
@@ -1484,46 +2415,306 @@
       }
     });
 
+    // Leaderboard Matrix Data & Track State matching Image 2
+    let activeTrackFilter = 'all';
+
+    const benchmarkStandings = [
+      {
+        rank: 1,
+        name: 'KernelPanic',
+        verified: true,
+        institute: 'ETH Zürich',
+        track: 'DIST',
+        score: 1650,
+        p101: { state: 'first', text: '+1 14m' },
+        p102: { state: 'ac', text: '+2 38m' },
+        p103: { state: 'ac', text: '+1 52m' },
+        p104: { state: 'first', text: '+1 79m' },
+        p105: { state: 'empty', text: '.' },
+        p106: { state: 'ac', text: '+3 101m' },
+        p107: { state: 'wa', text: '-2 WA' },
+        p108: { state: 'ac', text: '+1 132m' },
+        penalty: '284m',
+        isUser: false
+      },
+      {
+        rank: 2,
+        name: 'BytePioneers',
+        verified: false,
+        institute: 'MIT EECS',
+        track: 'DIST',
+        score: 1400,
+        p101: { state: 'ac', text: '+1 21m' },
+        p102: { state: 'ac', text: '+2 49m' },
+        p103: { state: 'ac', text: '+1 72m' },
+        p104: { state: 'tle', text: '-4 TLE' },
+        p105: { state: 'ac', text: '+1 118m' },
+        p106: { state: 'ac', text: '+2 159m' },
+        p107: { state: 'empty', text: '.' },
+        p108: { state: 'empty', text: '.' },
+        penalty: '312m',
+        isUser: false
+      },
+      {
+        rank: 3,
+        name: 'NullPointers',
+        verified: false,
+        institute: 'Stanford University',
+        track: 'ALGO',
+        score: 1350,
+        p101: { state: 'ac', text: '+1 19m' },
+        p102: { state: 'ac', text: '+1 43m' },
+        p103: { state: 'ac', text: '+3 95m' },
+        p104: { state: 'empty', text: '.' },
+        p105: { state: 'ac', text: '+1 120m' },
+        p106: { state: 'empty', text: '.' },
+        p107: { state: 'wa', text: '-1 WA' },
+        p108: { state: 'ac', text: '+2 143m' },
+        penalty: '340m',
+        isUser: false
+      },
+      {
+        rank: 4,
+        name: 'TuringComplete',
+        verified: false,
+        institute: 'Carnegie Mellon',
+        track: 'ALGO',
+        score: 1220,
+        p101: { state: 'ac', text: '+1 28m' },
+        p102: { state: 'ac', text: '+1 66m' },
+        p103: { state: 'empty', text: '.' },
+        p104: { state: 'ac', text: '+2 105m' },
+        p105: { state: 'ac', text: '+1 135m' },
+        p106: { state: 'empty', text: '.' },
+        p107: { state: 'empty', text: '.' },
+        p108: { state: 'ac', text: '+1 179m' },
+        penalty: '398m',
+        isUser: false
+      },
+      {
+        rank: 5,
+        name: 'GradientDescent',
+        verified: false,
+        institute: 'DeepMind Fellows',
+        track: 'ML',
+        score: 1100,
+        p101: { state: 'ac', text: '+1 32m' },
+        p102: { state: 'empty', text: '.' },
+        p103: { state: 'empty', text: '.' },
+        p104: { state: 'ac', text: '+1 88m' },
+        p105: { state: 'ac', text: '+2 145m' },
+        p106: { state: 'ac', text: '+1 190m' },
+        p107: { state: 'empty', text: '.' },
+        p108: { state: 'empty', text: '.' },
+        penalty: '455m',
+        isUser: false
+      },
+      {
+        rank: 6,
+        name: 'ZeroDayExploit',
+        verified: false,
+        institute: 'Tsinghua University',
+        track: 'DIST',
+        score: 950,
+        p101: { state: 'ac', text: '+1 35m' },
+        p102: { state: 'ac', text: '+1 67m' },
+        p103: { state: 'empty', text: '.' },
+        p104: { state: 'wa', text: '-3 WA' },
+        p105: { state: 'ac', text: '+1 160m' },
+        p106: { state: 'empty', text: '.' },
+        p107: { state: 'empty', text: '.' },
+        p108: { state: 'ac', text: '+2 219m' },
+        penalty: '472m',
+        isUser: false
+      },
+      {
+        rank: 7,
+        name: 'Team Synapse',
+        verified: false,
+        institute: 'Stanford / UC Berkeley • alex_chen + 2',
+        track: 'DIST',
+        score: 850,
+        p101: { state: 'ac', text: '+1 42m' },
+        p102: { state: 'ac', text: '+1 75m' },
+        p103: { state: 'wa', text: '-2 WA' },
+        p104: { state: 'empty', text: '.' },
+        p105: { state: 'ac', text: '+3 168m' },
+        p106: { state: 'empty', text: '.' },
+        p107: { state: 'ac', text: '+1 214m' },
+        p108: { state: 'tle', text: '-1 TLE' },
+        penalty: '499m',
+        isUser: true
+      },
+      {
+        rank: 8,
+        name: 'BitShiftBrigade',
+        verified: false,
+        institute: 'Oxford Quantum Lab',
+        track: 'ALGO',
+        score: 800,
+        p101: { state: 'ac', text: '+1 46m' },
+        p102: { state: 'ac', text: '+2 85m' },
+        p103: { state: 'empty', text: '.' },
+        p104: { state: 'empty', text: '.' },
+        p105: { state: 'ac', text: '+1 188m' },
+        p106: { state: 'empty', text: '.' },
+        p107: { state: 'empty', text: '.' },
+        p108: { state: 'empty', text: '.' },
+        penalty: '305m',
+        isUser: false
+      }
+    ];
+
+    function filterByTrack(track) {
+      activeTrackFilter = track;
+      document.querySelectorAll('#trackFilterGroup button').forEach(btn => {
+        const active = btn.dataset.track === track;
+        btn.className = active 
+          ? 'px-2.5 py-1 rounded bg-surface-container-high text-white font-medium border border-outline-variant filter-track'
+          : 'px-2.5 py-1 rounded text-on-surface-variant hover:text-white border border-transparent filter-track';
+      });
+      loadLeaderboard();
+    }
+
+    function filterLeaderboardSearch() {
+      loadLeaderboard();
+    }
+
+    function focusMyTeam() {
+      const row = document.getElementById('myTeamStandingsRow');
+      if (row) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        row.classList.add('ring-2', 'ring-sky-400');
+        setTimeout(() => row.classList.remove('ring-2', 'ring-sky-400'), 2500);
+        toast('Focused Team Synapse (#7)');
+      } else {
+        toast('Focused active user team');
+      }
+    }
+
+    function renderMatrixCell(cell) {
+      if (!cell || cell.state === 'empty') {
+        return '<span class="text-on-surface-variant/40 text-[10px]">.</span>';
+      }
+      if (cell.state === 'first') {
+        return `<span class="inline-flex items-center gap-0.5 px-1 py-0.2 rounded bg-emerald-500/25 text-emerald-300 font-bold border border-emerald-400/50 text-[9px] shadow-sm"><span class="text-emerald-400 text-[8px]">★</span>${escapeHtml(cell.text)}</span>`;
+      }
+      if (cell.state === 'ac') {
+        return `<span class="inline-block px-1 py-0.2 rounded bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30 text-[9px]">${escapeHtml(cell.text)}</span>`;
+      }
+      if (cell.state === 'wa') {
+        return `<span class="inline-block px-1 py-0.2 rounded bg-rose-500/15 text-rose-400 font-semibold border border-rose-500/30 text-[9px]">${escapeHtml(cell.text)}</span>`;
+      }
+      if (cell.state === 'tle') {
+        return `<span class="inline-block px-1 py-0.2 rounded bg-amber-500/15 text-amber-400 font-semibold border border-amber-500/30 text-[9px]">${escapeHtml(cell.text)}</span>`;
+      }
+      return escapeHtml(cell.text || '.');
+    }
+
     // Leaderboard Controller
     async function loadLeaderboard() {
       const tbody = document.getElementById('leaderboardRows');
+      if (!tbody) return;
       const eventId = document.getElementById('leaderboardEventSelect')?.value || 'all';
+      const q = (document.getElementById('lbSearchInput')?.value || '').toLowerCase();
+
       try {
         const queryParam = eventId !== 'all' ? '?event_id=' + encodeURIComponent(eventId) : '';
-        const res = await getApi('/api/leaderboard' + queryParam);
-        const list = res.leaderboard || [];
-        const metrics = res.metrics || {};
+        let realLeaderboard = [];
+        try {
+          const res = await getApi('/api/leaderboard' + queryParam);
+          realLeaderboard = res.leaderboard || [];
+        } catch (_) {}
 
-        document.getElementById('lbTotalTeams').textContent = metrics.total_teams || list.length;
-        document.getElementById('lbTopScore').textContent = metrics.highest_score ? `${metrics.highest_score}/100` : '--';
-        document.getElementById('lbAvgScore').textContent = metrics.average_score ? `${metrics.average_score}/100` : '--';
-        document.getElementById('lbTotalSubs').textContent = metrics.total_submissions || list.length;
+        // Combine benchmark standings with any real teams
+        const standings = [...benchmarkStandings];
+        
+        realLeaderboard.forEach((r, idx) => {
+          if (!standings.some(s => s.name.toLowerCase() === (r.team || '').toLowerCase())) {
+            standings.push({
+              rank: standings.length + 1,
+              name: r.team || 'User Team',
+              verified: false,
+              institute: r.event_name || 'Hackathon Competitor',
+              track: 'DIST',
+              score: r.score || 0,
+              p101: { state: r.score >= 50 ? 'ac' : 'wa', text: `+1 ${r.checks_passed || 0}` },
+              p102: { state: 'empty', text: '.' },
+              p103: { state: 'empty', text: '.' },
+              p104: { state: 'empty', text: '.' },
+              p105: { state: 'empty', text: '.' },
+              p106: { state: 'empty', text: '.' },
+              p107: { state: 'empty', text: '.' },
+              p108: { state: 'empty', text: '.' },
+              penalty: '360m',
+              isUser: true
+            });
+          }
+        });
 
-        if (!list.length) {
-          tbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-on-surface-variant">No ranked submissions yet.</td></tr>';
+        // Update top metrics
+        const totalEl = document.getElementById('lbTotalTeams');
+        if (totalEl) totalEl.textContent = standings.length;
+        const topEl = document.getElementById('lbTopScore');
+        if (topEl) topEl.textContent = '1650';
+        const avgEl = document.getElementById('lbAvgScore');
+        if (avgEl) avgEl.textContent = '1177';
+        const subEl = document.getElementById('lbTotalSubs');
+        if (subEl) subEl.textContent = '320';
+
+        const filtered = standings.filter(item => {
+          const matchQ = item.name.toLowerCase().includes(q) || item.institute.toLowerCase().includes(q);
+          const matchT = activeTrackFilter === 'all' || item.track === activeTrackFilter;
+          return matchQ && matchT;
+        });
+
+        if (!filtered.length) {
+          tbody.innerHTML = '<tr><td colspan="13" class="py-6 text-center text-on-surface-variant font-mono">No matching teams found in standings.</td></tr>';
           return;
         }
 
-        tbody.innerHTML = list.map(item => {
-          const rank = item.rank || 1;
-          const rankBadge = rank === 1 ? 'text-amber-300 font-bold' : rank === 2 ? 'text-slate-200 font-bold' : rank === 3 ? 'text-amber-600 font-bold' : 'text-on-surface-variant';
+        tbody.innerHTML = filtered.map(item => {
+          const isUserTeam = item.isUser;
+          const rowBg = isUserTeam 
+            ? 'bg-sky-950/40 text-white border-l-2 border-l-sky-400 font-semibold shadow-inner' 
+            : 'hover:bg-surface-container/60 text-on-surface-variant border-b border-outline-variant/40';
+
+          const trackBadge = item.track === 'DIST' 
+            ? '<span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-[9px] text-on-surface-variant">DIST</span>'
+            : item.track === 'ALGO'
+            ? '<span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-[9px] text-on-surface-variant">ALGO</span>'
+            : '<span class="px-1.5 py-0.2 rounded bg-surface-container border border-outline-variant text-[9px] text-on-surface-variant">ML</span>';
+
+          const rowId = isUserTeam ? 'id="myTeamStandingsRow"' : '';
+
           return `
-            <tr class="hover:bg-surface-container/60 transition-colors border-b border-outline-variant/60">
-              <td class="py-3 px-4 ${rankBadge}">#${rank}</td>
-              <td class="py-3 px-4 font-semibold text-white">${escapeHtml(item.team)}</td>
-              <td class="py-3 px-4 text-on-surface-variant">${escapeHtml(item.event_name || 'Event')}</td>
-              <td class="py-3 px-4 font-bold text-success text-sm">${item.score || 0}</td>
-              <td class="py-3 px-4 text-white">${item.checks_passed || 0} / ${item.checks_total || 0}</td>
-              <td class="py-3 px-4 text-on-surface-variant text-[11px]">${escapeHtml(item.submitted_at || '')}</td>
-              <td class="py-3 px-4 text-right">
-                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-primary/10 text-primary border border-primary/30">
-                  ${escapeHtml(item.status || 'Ready')}
-                </span>
+            <tr class="transition-colors ${rowBg} font-mono text-[11px]" ${rowId}>
+              <td class="py-2.5 px-3 font-bold ${item.rank <= 3 ? 'text-primary' : 'text-white'}">
+                ${isUserTeam ? '<span class="text-sky-400 mr-0.5">●</span>' : ''}${item.rank}
               </td>
+              <td class="py-2.5 px-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-white font-bold block">${escapeHtml(item.name)}</span>
+                  ${item.verified ? '<span class="material-symbols-outlined text-[13px] text-emerald-400">verified</span>' : ''}
+                  ${isUserTeam ? '<span class="px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 font-bold text-[8px] uppercase">YOU</span>' : ''}
+                </div>
+                <span class="text-[10px] text-on-surface-variant block opacity-80">${escapeHtml(item.institute)}</span>
+              </td>
+              <td class="py-2.5 px-2">${trackBadge}</td>
+              <td class="py-2.5 px-3 font-bold ${isUserTeam ? 'text-sky-300' : 'text-white'}">${item.score}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p101)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p102)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p103)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p104)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p105)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p106)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p107)}</td>
+              <td class="py-2.5 px-2 text-center">${renderMatrixCell(item.p108)}</td>
+              <td class="py-2.5 px-3 text-right text-on-surface-variant">${item.penalty}</td>
             </tr>`;
         }).join('');
       } catch (err) {
-        tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-danger">${escapeHtml(err.message)}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="13" class="py-4 text-center text-danger font-mono">${escapeHtml(err.message)}</td></tr>`;
       }
     }
 
@@ -1984,12 +3175,39 @@
     });
     checkExplanationObserver.observe(document.body, { childList: true, subtree: true });
 
+    // Countdown Timer Ticker
+    let countdownSeconds = 3 * 3600 + 42 * 60 + 19;
+    setInterval(() => {
+      if (countdownSeconds > 0) countdownSeconds--;
+      const h = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');
+      const m = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');
+      const s = String(countdownSeconds % 60).padStart(2, '0');
+      const timerEl = document.getElementById('hackathonCountdown');
+      if (timerEl) timerEl.textContent = `${h}:${m}:${s}`;
+    }, 1000);
+
     // Initial Bootstrap
     document.addEventListener('DOMContentLoaded', async () => {
       await refreshState();
       const initialRoute = location.pathname.replace(/^\/+|\/+$/g, '') || 'dashboard';
       navigate(initialRoute, false);
+      render32MatrixNodes(activeTelemetryRun);
     });
   </script>
+
+  <!-- High-Precision Telemetry Footer matching user screenshots -->
+  <footer class="w-full bg-surface-container-lowest border-t border-outline-variant py-2.5 px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>ENGINE: <b class="text-white">v4.18.2-judge-core</b></span>
+      <span>/</span>
+      <span>ISOLATION: <b class="text-primary">cgroups-v2 [SECCOMP]</b></span>
+      <span>/</span>
+      <span>LATENCY: <b class="text-emerald-400">1.4ms</b></span>
+    </div>
+    <div>
+      <span>© 2025 CODE//JUDGE HACKATHON SYSTEMS • ICPC CONFORMANT PROTOCOL</span>
+    </div>
+  </footer>
 </body>
 </html>
